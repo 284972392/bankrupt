@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="Description" content="全名小赚"/>
+		<meta name="Keywords" content="全名小赚"/>
+		<title>全名小赚</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<style type="text/css">
+			body{
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				min-height: 41.68rem;
+				overflow-x: hidden;
+				overflow-y: scroll;
+				background: url(img/bg@3x.png) no-repeat center center;
+				background-size: 100% 100%;
+			}
+			.top{
+				flex: 1;
+				box-sizing: border-box;
+				padding-top:2.03rem;
+				padding-bottom: 2.08rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.top_div1{
+				width: 15.65rem;
+				height: 2.59rem;
+				background: url(img/congran.png) no-repeat center center;
+				background-size: 100% 100%;
+			}
+			.top_div2{
+				width: 17.81rem;
+				height: 20.18rem;
+			}
+			.top_div2 img{
+				width: 100%;
+				height: 100%;
+			}
+			.top_div3{
+				width: 18.21rem;
+				height: 9.96rem;
+				background: url(img/zi@3x.png) no-repeat center center;
+				background-size: 100% 100%;
+			}
+			.bot{
+				width: 100%;
+				height: 3.78rem;
+				background: #ffffff;
+				display: flex;
+				align-items: center;
+				justify-content:center;
+			}
+			.bot .content{
+				width: 7.15rem;
+				height: 1.75rem;
+				display: flex;
+				justify-content: space-between;
+				background: url(img/logo@3x.png) no-repeat center center;
+				background-size: 100% 100%;
+			}
+			.blueBall{
+				width: 2.43rem;
+				height: 2.43rem;
+				position: absolute;
+				top: 17.68rem;
+				left: 1.53rem;
+				background: url(img/qiu1@3x.png) no-repeat center center;
+				background-size: 100% 100%;
+			}
+			.redBall{
+				width: 2.03rem;
+				height: 2.03rem;
+				position: absolute;
+				top: 9.68rem;
+				right: 2.06rem;
+				background: url(img/qiu2@3x.png) no-repeat center center;
+				background-size: 100% 100%;
+			
+				
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div class="top">
+			<div class="top_div1"></div>
+			<div class="top_div2">
+				<img src="img/redBox.png"/>
+			</div>
+			<div class="top_div3">
+				
+			</div>
+			
+		</div>
+		<div class="bot">
+			<div class="content">
+				</div>
+		</div>
+		<div class="blueBall"></div>
+		<div class="redBall"></div>
+		<script src="js/jquery-2.2.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//防止滑动的时候整个屏幕滑动
+//			document.body.addEventListener('touchmove', function (e) {
+//			  e.preventDefault(); //阻止默认的处理方式(阻止下拉滑动的效果)
+//			}, {passive: false});
+//页面访问统计
+	var pageAccesURl ='https://cloud.miduoxing.cn/pageAccess/v2/pageAccessMore?pageName=quanmingYL3&&channel=lvtudiandian'
+		$.ajax({
+						type:"post",
+						url:pageAccesURl,
+						contentType : "application/json",
+						Accept : "*/*",
+						success:function(res){
+						}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="Description" content="出行保障"/>
+		<meta name="Keywords" content="出行保障"/>
+		<title>出行保障</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<style type="text/css">
+			body{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+     			background: url('http://image.miduoxing.cn/5a5d50d9-2f90-4278-abf8-eb677b621bce') no-repeat center center;
+				background-size:100% 100%;
+			}
+			.bd{
+				height: 100%;
+				width: 100%;
+
+				z-index: 99;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bd"></div>
+		<script src="zepto_1.1.3.js" type="text/javascript" charset="utf-8"></script>	
+		<script type="text/javascript">
+
+//页面访问统计
+	var pageAccesURl ='https://cloud.miduoxing.cn/pageAccess/v2/pageAccessMore?pageName=chuxing&&channel=lvtudiandian'
+		$.ajax({
+						type:"post",
+						url:pageAccesURl,
+						contentType : "application/json",
+						Accept : "*/*",
+						success:function(res){
+						}
+			});
+
+
+			$(".bd").on("click",function(){
+				let btnAccessUrl;
+				window.location.href = "https://www.heiniubao.com/activity/gtdcpa1"
+				 btnAccessUrl = "https://cloud.miduoxing.cn/pageAccess/v2/btnAccess?pageName="+"chuxing&&btnName="+"领取"
+						
+					$.ajax({
+					type:"post",
+					url:btnAccessUrl,
+					contentType : "application/json",
+					Accept : "*/*",
+					success:function(res){
+								
+					}
+				})
+
+
+			})
+
+		</script>
+	</body>
+</html>

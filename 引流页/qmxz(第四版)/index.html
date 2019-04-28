@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="Description" content="全名小赚"/>
+		<meta name="Keywords" content="全名小赚"/>
+		<title>全名小赚</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<style type="text/css">
+			body{
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+				align-items: center;
+				min-height: 41.68rem;
+				overflow-x: hidden;
+				overflow-y: scroll;
+				background: url(img/bg.png) no-repeat center center;
+				background-size: 100% 100%;
+				box-sizing: border-box;
+				padding-bottom: 4.87rem;
+				padding-top: 2.87rem;
+				
+			}
+			.redBox{
+				width: 15.43rem;
+				height: 17.25rem;
+				background: url(img/redBox.png) no-repeat center center;
+				background-size: 100% 100%;
+			}
+			.erwema{
+				width: 14.37rem;
+				height: 10.31rem;
+			}
+			.erwema img{
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div class="redBox"></div>
+		<div class="erwema">
+			<img src="img/erwema.png"/>
+		</div>
+		<script src="js/jquery-2.2.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//防止滑动的时候整个屏幕滑动
+//			document.body.addEventListener('touchmove', function (e) {
+//			  e.preventDefault(); //阻止默认的处理方式(阻止下拉滑动的效果)
+//			}, {passive: false});
+//页面访问统计
+	var pageAccesURl ='https://cloud.miduoxing.cn/pageAccess/v2/pageAccessMore?pageName=quanmingYL4&&channel=lvtudiandian'
+		$.ajax({
+						type:"post",
+						url:pageAccesURl,
+						contentType : "application/json",
+						Accept : "*/*",
+						success:function(res){
+						}
+			});
+		</script>
+	</body>
+</html>

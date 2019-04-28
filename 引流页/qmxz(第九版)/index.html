@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="Description" content="全名小赚"/>
+		<meta name="Keywords" content="全名小赚"/>
+		<title>全名小赚</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<style type="text/css">
+			body{
+				width: 100%;
+				height: 100%;
+				display: flex;
+				min-height: 41.6875rem;
+				flex-direction: column;
+				align-items: center;
+				overflow-x: hidden;
+				overflow-y: scroll;
+				box-sizing: border-box;
+				background: url('http://image.miduoxing.cn/155ae36e-9a90-4233-bcd7-4a19b1effeb6') no-repeat center center;
+				background-size:100% 100%;
+			}
+			.top{
+				height: 11.28125rem;
+				width: 18.53125rem;
+				margin-top: 2.375rem;
+			}
+			.qrCode{
+				width: 11.125rem;
+				height: 13.34375rem;
+				margin-top: 9.5625rem;
+			}
+
+
+		
+		</style>
+		
+	</head>
+	<body>
+		<img src="http://image.miduoxing.cn/e3d55cca-c9ea-4498-91b7-fef2e06e1a84" alt="" class="top">
+		<img src="http://image.miduoxing.cn/9295bf8d-d867-4a9a-a417-ced14076c5f6" alt="" class="qrCode">
+
+
+		<script src="js/jquery-2.2.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//防止滑动的时候整个屏幕滑动
+//			document.body.addEventListener('touchmove', function (e) {
+//			  e.preventDefault(); //阻止默认的处理方式(阻止下拉滑动的效果)
+//			}, {passive: false});
+//页面访问统计
+	var pageAccesURl ='https://cloud.miduoxing.cn/pageAccess/v2/pageAccessMore?pageName=quanmingYL9&&channel=lvtudiandian'
+		$.ajax({
+						type:"post",
+						url:pageAccesURl,
+						contentType : "application/json",
+						Accept : "*/*",
+						success:function(res){
+						}
+			});
+
+
+		</script>
+	</body>
+</html>
