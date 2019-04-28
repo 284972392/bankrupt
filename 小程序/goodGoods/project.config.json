@@ -1,0 +1,214 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.4.2",
+	"appid": "wx0e9e06dae7941822",
+	"projectname": "%E6%82%A0%E4%BA%AB%E5%A5%BD%E8%B4%A7",
+	"miniprogramRoot": "dist/wx/",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+<<<<<<< HEAD
+			"current": 20,
+=======
+<<<<<<< HEAD
+			"current": 22,
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+			"current": 19,
+=======
+			"current": 18,
+>>>>>>> 224a0a13561b9b9e89869f818ab4e97ef651af7e
+=======
+			"current": 19,
+>>>>>>> d18a9c8429ac0e39fb900a6d618d752584f967af
+>>>>>>> 7b2d304503b443e02085d4bd7981e0a33b193e9e
+>>>>>>> 0f8ffaac440cbc33ce1b827237fe620f32e276db
+			"list": [
+				{
+					"id": -1,
+					"name": "wde",
+					"pathName": "pages/my/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "us",
+					"pathName": "pages/my/contactUs/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "puzzleSolve",
+					"pathName": "pages/my/puzzleSolve/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "subSuccess",
+					"pathName": "pages/getCash/subSuccess/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "priceDetail",
+					"pathName": "pages/my/priceDetail/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "myTeam",
+					"pathName": "pages/my/myTeam/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "列表",
+					"pathName": "pages/listPage/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "分类",
+					"pathName": "pages/classification/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "详情",
+					"pathName": "pages/detail/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/searchPage/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/searchPage/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/my/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "建议反馈",
+					"pathName": "pages/my/suggest/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "反馈记录",
+					"pathName": "pages/my/suggestRecord/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "收藏",
+					"pathName": "pages/listPage/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "团队",
+					"pathName": "pages/logs/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "strategy",
+					"pathName": "pages/strategy/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "myteam",
+					"pathName": "pages/my/myTeam/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "建议",
+					"pathName": "pages/my/suggest/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "详情",
+					"pathName": "pages/detail/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+<<<<<<< HEAD
+					"name": "我的",
+					"pathName": "pages/my/main"
+=======
+					"name": "s",
+<<<<<<< HEAD
+					"pathName": "pages/getCash/getCashRecord/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "activity",
+					"pathName": "pages/newYearActivity/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "yj",
+					"pathName": "pages/my/priceDetail/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "getcash",
+					"pathName": "pages/getCash/main"
+=======
+					"pathName": "pages/getCash/getCashRecord/main"
+>>>>>>> d18a9c8429ac0e39fb900a6d618d752584f967af
+>>>>>>> 7b2d304503b443e02085d4bd7981e0a33b193e9e
+>>>>>>> 0f8ffaac440cbc33ce1b827237fe620f32e276db
+				}
+			]
+		}
+	}
+}

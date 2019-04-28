@@ -1,0 +1,57 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/logs/main",
+    "pages/strategy/main",
+    "pages/newYearActivity/main",
+    "pages/my/main",
+    "pages/my/priceDetail/main",
+    "pages/my/myOrder/main",
+    "pages/my/myTeam/main",
+    "pages/my/invite/main",
+    "pages/my/contactUs/main",
+    "pages/my/puzzleSolve/main",
+    "pages/my/suggest/main",
+    "pages/my/suggestRecord/main",
+    "pages/getCash/getCashRecord/main",
+    "pages/getCash/subSuccess/main",
+    "pages/searchPage/main",
+    "pages/getCash/main",
+    "pages/detail/main",
+    "pages/classification/main",
+    "pages/listPage/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#e65454",
+    "navigationBarTitleText": "悠享好货",
+    "navigationBarTextStyle": "#ffffff"
+  },
+ "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#ff6a3c",
+      "backgroundColor": "#ffffff",
+      "font-size": "44rpx;",
+      "text-align":"center",
+    "borderStyle":"black",
+    "list": [{
+      "selectedIconPath": "images/shouyehong@2x.png",
+      "iconPath": "images/shoyehui@2x.png",
+      "pagePath": "pages/index/main",
+      "text": "首页"
+    }, {
+      "selectedIconPath": "images/tuanduihong@2x.png",
+      "iconPath": "images/tuanduihui@2x.png",
+      "pagePath": "pages/logs/main",
+      "text": "团队"
+    }, {
+      "selectedIconPath": "images/wodehong@2x.png",
+      "iconPath": "images/wodehui@2x.png",
+      "pagePath": "pages/my/main",
+      "text": "我的"
+    }]
+  },
+  "navigateToMiniProgramAppIdList": ["wx32540bd863b27570"]
+
+}
+
