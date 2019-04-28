@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>拆红包</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="Keywords" content="红包，夏伏，旅途点点"/>
+		<meta name="description" content="红包，夏伏，旅途点点"/>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/giftRole7.css"/>	
+	
+	</head>
+	<body>
+		<img class="bg" src="img/bg@2x.png"/>
+		<div class="bigWord animated wobble" id='bigWord'></div>
+		<div class="top">
+			<div class="rule">抽奖规则</div>
+			<div class="myGift">我的奖品</div>
+		</div>
+		<!--弹性盒子， 上面留白 下面填充-->
+		<div class="bigBox">
+			<div class="block">
+				<p class="danmu">U***2 抽中5元现金红包</p>
+				<p class="danmu danmu2">芒***茶 抽中3元现金红包</p>
+				<p class="danmu danmu3">莫***f  抽中5元现金红包</p>
+				<p class="danmu danmu4">小***女  抽中1元现金红包</p>
+			</div>
+			<div class="contanner">
+				<div class="chanse">还剩&nbsp;<span>6</span>&nbsp;次机会</div>
+				<div class="redBoxs">
+					<div class="red0"></div>
+					<div class="red1"></div>
+					<div class="red2"></div>
+					<div class="red3"></div>
+					<div class="red4"></div>
+					<div class="red5"></div>
+					<div class="red6"></div>
+					<div class="red7"></div>
+					<div class="red8"></div>
+				
+				</div>
+				<div class="resum">
+					<div class="title">奖品信息</div>
+					<div class="pianzi">
+						<p>一等奖 5元现金红包 <span> （500份） </span></p>
+						<p>二等奖 3元现金红包 <span> （1000份） </span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--遮罩-->
+		<div class="zheZhao">
+			<!--规则遮罩-->
+			<div class="ruleZZ animated bounceIn">
+					<div class="cha"></div>
+			</div>
+			<!--中奖遮罩-->
+			<div class="giftZZ animated flipInY">
+					<div class="ZJL"></div>
+					<div class="banner">
+						<img src="img/guang@2x.png" alt="" />
+						<div class="title"></div>
+						<div class="toGetGift"></div>		
+					</div>
+					<div class="cha"></div>
+			</div>
+			<!--没抽中还有机会-->
+			<div class="noneGift animated flipInY">
+					<div class="ZJL"></div>
+					<div class="banner">
+						<div class="title">很遗憾没有抽中奖品</div>
+						<div class="toGetGift"></div>
+					</div>
+								<div class="cha"></div>
+			</div>
+			<!--没抽中没有机会-->
+			<div class="noChanse animated bounceIn">
+					<div class="ZJL"></div>
+					<div class="banner">
+						<div class="title">您的抽奖机会已用完</div>
+						<div class="toGetGift"></div>
+					</div>
+					<div class="cha"></div>
+			</div>
+
+		</div>
+		<script src="js/jquery-2.2.0.min.js"></script>
+		<script src="js/giftRole7.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+				let style = document.createElement('style');
+				document.head.appendChild(style);
+				let width = window.innerWidth;
+				let from = `from { visibility: visible; -webkit-transform: translateX(${2.5*width}px); }`;
+				let to = `to { visibility: visible; -webkit-transform: translateX(-100%); }`;
+				style.sheet.insertRule(`@-webkit-keyframes danmu { ${from} ${to} }`, 0);
+			
+		</script>
+	</body>
+</html>

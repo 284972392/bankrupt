@@ -1,0 +1,335 @@
+			body{
+				width: 100%;
+				height: 100%;
+				background:#da2f3f!important;
+			}
+			.banner{
+				width: 100%;
+				height: 13.56rem;
+				background: url(../img/bg.png) no-repeat center center;
+				background-size: 100%;
+			}
+			.banner .bigWord{
+				 width: 46.6%;
+				 height: 2.37rem;
+				 background: url(../img/bigWord.png) no-repeat center center;
+				 background-size: 100% 100%;
+				 position: absolute;
+				 top: 6.59rem;
+				 left:26.7% ;
+				 z-index: 55;
+			}
+				 .top{
+				width: 100%;
+				height: 3.03rem;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 0 0.31rem;
+				position: fixed;
+				left: 0;
+				top: 0;
+				z-index: 500;
+			}
+			 .top div{
+				width: 4.18rem;
+				height: 1.43rem;
+				border-radius: 15px;
+				background: rgba(0,0,0,.5);
+				font-size: 0.71rem;
+				color: #ffffff;
+				text-align: center;
+				line-height: 1.43rem;
+			}
+	/*抽奖机会次数*/		
+	.changse{
+		width: 46.2%;
+		height: 2.18rem;
+		text-align: center;
+		line-height: 2.18rem;
+		color: #ffffff;
+		font-weight: 600;
+		font-size: 0.9rem;
+		position: absolute;
+		background: #c71b2b;
+		border-radius: 50px;
+		top: 12.18rem;
+		left: 26.9%;
+	}
+	.changse span{
+		font-size: 1.09rem;
+		color: #fcff00;
+	}	
+	/*刮奖区域*/
+	.guaA{
+		width: 82.66%;
+		height: 10.34rem;
+		background: url(../img/guaka@2x.png) no-repeat center center;
+		background-size: 100% 100%;
+		position: absolute;
+		top: 15.15rem;
+		left: 8.67%;
+		z-index: 20;
+		overflow: hidden;
+	}
+	#myCanvas {
+			position: absolute;
+			width:77.2%;
+			height: 8.68rem;
+			top: 15.96rem;
+			left: 11.4%;
+			z-index: 60;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 200px 100px;
+
+        } 
+        .noChangse {
+			position: absolute;
+			width:77.2%;
+			height: 8.68rem;
+			top: 15.96rem;
+			left: 11.4%;
+			z-index: 60;
+			background: #f9cabf;
+            display: none;
+			
+        }	
+        .noChangse .thanks{
+        	width: 100%;
+        	height: 2.12rem;
+        	text-align: center;
+        	line-height: 2.12rem;
+        	font-size: 1.46rem;
+        	color: #cb1425;
+        	margin-top: 1.87rem;
+        }
+        .noChangse .toThrd{
+        	width: 8.03rem;
+        	height: 2.09rem;
+        	margin: 0 auto;
+        	margin-top: 1rem;
+        	text-align: center;
+        	line-height: 2.09rem;
+        	color: #ffffff;
+        	font-size: 1.06rem;
+        	background: #cd2434;
+        	border-radius: 5px;
+        }
+        .badChanse{
+			position: absolute;
+			width:77.2%;
+			height: 8.68rem;
+			top: 15.96rem;
+			left: 11.4%;
+			z-index: 60;
+			background: #f9cabf;
+            display: none;
+        }
+        .badChanse .thanks{
+        	width: 100%;
+        	height: 2.12rem;
+        	text-align: center;
+        	line-height: 2.12rem;
+        	font-size: 1.46rem;
+        	color: #cb1425;
+        	margin-top: 1.87rem;
+        }
+        .badChanse .continiu{
+        	width: 8.03rem;
+        	height: 2.09rem;
+        	margin: 0 auto;
+        	margin-top: 1rem;
+        	text-align: center;
+        	line-height: 2.09rem;
+        	color: #ffffff;
+        	font-size: 1.06rem;
+        	background: #cd2434;
+        	border-radius: 5px;
+        }
+	/*奖品区域*/
+	.giftList{
+		width: 88.53%;
+		height: 14rem;
+		margin:  0 auto;
+		background: url(../img/d@2x.png) no-repeat center center;
+		background-size: 100% 100%;
+		position: absolute;
+		bottom: 0.56rem;
+		left: 5.73%;
+		z-index: 10;
+		overflow: hidden;
+	}	
+	.giftList .header{
+		width: 5.9rem;
+		height: 1.5rem;
+		text-align: center;
+		line-height: 1.5rem;
+		font-size:0.81rem;
+		color: #ffffff;
+		margin: 0 auto;
+		margin-top: 3.59rem;
+		/*background: #c71b2b;*/
+		border-radius: 30px;
+		}
+	.giftList .threeGift{
+		width: 100%;
+		height: 6.9rem;
+		margin-top: 1.03rem;
+		display: flex;
+		justify-content: space-around;
+	}
+	.giftList .threeGift .gift1,.giftList .threeGift .gift2,.giftList .threeGift .gift3{
+		width: 6.06rem;
+		height: 100%;
+		overflow: hidden;
+	}
+	.giftList .threeGift .gift1 img,.giftList .threeGift .gift2 img,.giftList .threeGift .gift3 img{
+		display: block;
+		width: 3.75rem;
+		height: 3.46rem;
+		margin: 0 auto;
+		background: #ffffff;
+		border-radius: 5px;
+	}
+	.giftList .threeGift .gift1 .title,.giftList .threeGift .gift2 .title,.giftList .threeGift .gift3 .title{
+		width: 100%;
+		height: 1.87rem;
+		line-height: 1.87rem;
+		text-align: center;
+		font-size: 0.75rem;
+		color: #ffffff;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.giftList .threeGift .gift1 .button,.giftList .threeGift .gift2 .button,.giftList .threeGift .gift3 .button{
+		width:4.06rem;
+		margin: 0 auto;
+		height: 1.5rem;
+		line-height: 1.5rem;
+		text-align: center;
+		background: #8934fe;
+		font-size: 0.71rem;
+		border-radius: 4px;
+		color: #d4b9fa;
+
+	}
+	.giftList .threeGift .gift1 .button2,.giftList .threeGift .gift2 .button2,.giftList .threeGift .gift3 .button2{
+		width:4.06rem;
+		margin: 0 auto;
+		height: 1.5rem;
+		line-height: 1.5rem;
+		text-align: center;
+		font-size: 0.71rem;
+		border-radius: 4px;
+		color: #ffffff;
+		background: -webkit-linear-gradient(#e301ff, #7d10ff);
+		background: -o-linear-gradient(#e301ff, #7d10ff); 
+		background: -moz-linear-gradient(#e301ff, #7d10ff); 
+		display: none;
+		background: linear-gradient(#e301ff, #7d10ff);
+	}
+.zheZhao{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: rgba(0,0,0,.8);
+		z-index: 999;
+		overflow: hidden;
+		display: none;
+		padding-top: 2rem;
+			}   
+			 .cha{
+				width: 1.87rem;
+				height: 1.87rem;
+				background: url(../img/cha@2x.png) no-repeat center center;
+				background-size: 100% 100%;
+				margin: 0 auto;
+				margin-top: 3rem;
+			}     
+   .ruleZZ{
+				width: 17.75rem;
+				height: 28.9rem;
+				background: url(../img/guiz@2x.png) no-repeat top center;
+				background-size: 100%;
+				margin: 0 auto;
+				margin-top: 2.82rem;
+				display: none;
+				overflow: hidden;
+				position: relative;
+			}    
+			.ruleZZ .cha{
+				position: absolute;
+				bottom: 0;
+				left:7.97rem ;
+			}
+		.giftZZ{
+				/*width:17.75rem;
+				height: 23.87rem;*/
+				height: 100%;
+				width: 100%;
+				margin: 0 auto;
+		/*		margin-top: 2.75rem;*/
+		    /* padding-top: 2.75rem; */
+				background: url(../img/guang@2x.png) no-repeat center top;
+				background-size: 100%;
+				overflow: hidden;
+				display: none;
+			}	
+		.giftZZ  .ZJL{
+				width: 9.37rem;
+				height: 3.21rem;
+				background: url(../img/zjl@2x.png) no-repeat center center;
+				background-size: 100% 100%;
+				margin: 0 auto;
+				margin-top: 2.75rem;
+			}
+		.giftZZ  .banner{
+			width: 17.75rem;
+			height: 17.28rem;
+			margin: 0 auto;
+			background: url(../img/hez@2x.png) no-repeat center center;
+			background-size: 100% 100%;
+			margin-top: 0.68rem;
+			overflow: hidden;
+		}
+		.giftZZ  .banner img{
+			display: block;
+			width: 13.59rem;
+			height: 7.09rem;
+			margin: 0.46rem auto;
+		}
+		.giftZZ  .banner .title{
+			margin-top: 1.75rem;
+			width: 100%;
+			height: 2.46rem;
+			line-height: 2.46rem;
+			text-align: center;
+			font-size: 1.18rem;
+			color: #ffffff;
+			font-weight: 600;
+		}
+		.giftZZ .banner .toGetGift{
+				width: 100%;
+				height: 4.56rem;
+				margin: 0 auto;
+				display: flex;
+				justify-content: space-around;
+			}	
+		.giftZZ .banner .toGetGift .toThree{
+			width: 9.81rem;
+			height: 4.56rem;
+			background: url(../img/linghiang@2x.png) no-repeat center center;
+			background-size: 100% 100%;
+		}
+		.giftZZ .banner .toGetGift .goOn{
+			width: 9.81rem;
+			height: 4.56rem;
+			background: url(../img/jixu@2x.png) no-repeat center center;
+			background-size: 100% 100%;
+		}
+			
+	

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>幸运大转盘</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<meta content="yes" name="apple-mobile-web-app-capable"/>
+		<meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+		<meta content="telephone=no" name="format-detection"/>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/award.css" />
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css"/>
+		<script type="text/javascript" src="js/rem.js" ></script>
+		<!--<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>-->
+		<script src="js/jquery-2.2.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/gagaRotate.js"></script>
+		
+	</head>
+	<body>
+		<div style="position: absolute;visibility: hidden;">
+				<script src="https://s19.cnzz.com/z_stat.php?id=1274011341&web_id=1274011341" language="JavaScript"></script>	
+			</div>
+		<div id="award">
+		<!--background_top-->
+		  <div class="space">
+		    <div class="stars">
+		      <div class="star"></div>
+		      <div class="star pink"></div>
+		      <div class="star blue"></div>
+		      <div class="star yellow"></div>
+		      <div class="star purple"></div>
+			  <div class="star_bottom btms1"></div>
+			  <div class="star_bottom btms2"></div>
+			  <div class="star_bottom btms3"></div>
+			  <div class="star_bottom btms4"></div>
+			  <div class="star_s" style="left: 10%;top: 50%;animation: star-ani2 5s infinite ease-out;"></div>
+			  <div class="star_s" style="left: 21%;top: 30%;animation: star-ani2 2.5s infinite ease-out;"></div>
+			  <div class="star_s" style="right: 10%;top: 55%;animation: star-ani2 3s infinite ease-out;"></div>
+			  <div class="star_s" style="right: 26%;top: 33%;animation: star-ani2 7s infinite ease-out;"></div>
+			  <div class="star_s" style="left: 20%;top: 60%;"></div>
+		    </div>
+		
+		  </div>
+		
+			<div class="twoTop">
+				<div class="rule">抽奖规则</div>
+				<div class="myGift">我的奖品</div>
+			</div>
+			<div class="centerContent">
+				<div class="banner">
+				<img src="img/biaoti@2x.png" onclick="return false"/>
+				</div>
+			<div class="reSum">剩余抽奖机会 ：&nbsp;<span>3</span>&nbsp;次</div>
+			<div class="awardBox">
+				<span class="span1"></span>
+            	<span class="span2"></span>
+				<img src="img/pan@2x.png" />
+				<div class="awardGift">
+					<!--<img src="img/award01.png" style="transform: rotate(22deg);"/>-->
+					<div class="lottery">		
+					<div class="block block-6">			
+						<div class="content">		
+							<div class="text"></div>	
+							<div class="img">
+								<img src=""/>
+							</div>
+						</div>		
+					</div>		
+					<div class="block block-7">		
+						<div class="content">	
+							<div class="text"></div>
+							<div class="img">			
+								<img src="" />		
+							</div>				
+									
+						</div>			
+					</div>
+						<div class="block block-8">		
+							<div class="content">
+								<div class="text"></div>
+								<div class="img">			
+									<img src="" />		
+								</div>	
+							</div>
+						</div>
+						<div class="block block-1">	
+							<div class="content">
+								<div class="text"></div>	
+								<div class="img">
+									<img src="" />
+								</div>	
+							</div>	
+						</div>	
+						<div class="block block-2">	
+							<div class="content">
+								<div class="text"></div>	
+								<div class="img">
+									<img src="" />
+								</div>	
+							</div>	
+						</div>	
+						<div class="block block-3">
+							<div class="content">	
+								<div class="text"></div>
+								<div class="img">
+									<img src="" />
+								</div>
+							</div>
+						</div>
+						<div class="block block-4">	
+							<div class="content">
+								<div class="text"></div>
+								<div class="img">	
+									<img src="" />	
+								</div>	
+							</div>
+						</div>	
+						<div class="block block-5">	
+							<div class="content">
+								<div class="text"></div>
+								<div class="img">	
+									<img src="" />	
+								</div>	
+							</div>	
+						</div>
+				</div>
+				</div>
+				
+				<div class="start">
+					<img src="img/btn@2x.png" />
+				</div>
+			</div>
+			</div>
+			
+		</div>
+				<!--遮罩-->
+		<div class="zheZhao">
+			<!--规则遮罩-->
+			<div class="ruleZZ animated bounceIn">
+					<div class="cha"></div>
+			</div>
+			<!--中奖遮罩-->
+			<div class="giftZZ animated flipInY">
+				    <canvas></canvas>
+					<div class="ZJL"></div>
+					<div class="banner">
+						<img src="img/bg@2x.png" alt="" />
+						<div class="title"></div>
+						<div class="toGetGift"></div>		
+					</div>
+					<div class="cha"></div>
+			</div>
+			<!--没抽中还有机会-->
+			<div class="noneGift animated flipInY">
+					<div class="ZJL"></div>
+					<div class="banner">
+						<div class="title">很遗憾没有抽中奖品</div>
+						<div class="toGetGift"></div>
+					</div>
+								<div class="cha"></div>
+			</div>
+			<!--没抽中没有机会-->
+			<div class="noChanse animated bounceIn">
+					<div class="ZJL"></div>
+					<div class="banner">
+						<div class="title">您的抽奖机会已用完</div>
+						<div class="toGetGift"></div>
+					</div>
+					<div class="cha"></div>
+			</div>
+
+		</div>
+		
+
+		<script type="text/javascript" src="js/award.js" ></script>
+	</body>
+</html>
