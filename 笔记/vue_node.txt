@@ -1,0 +1,120 @@
+ <div class="static"
+     v-bind:class="{ active: isActive, 'text-danger': hasError }">
+</div>
+
+
+<div v-bind:class="[activeClass, errorClass]"></div>
+data: {
+  activeClass: 'active',
+  errorClass: 'text-danger'
+}
+结果:<div class="active text-danger"></div>
+
+div v-bind:class="[{ active: isActive }, errorClass]"></div>
+
+
+绑定内联样式
+<div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+<div v-bind:style="styleObject"></div>
+<div v-bind:style="[baseStyles, overridingStyles]"></div>
+
+
+失去焦点 @blur="psw_Blur"
+
+
+<div v-if="type === 'A'">
+  A
+</div>
+<div v-else-if="type === 'B'">
+  B
+</div>
+<div v-else-if="type === 'C'">
+  C
+</div>
+<div v-else>
+  Not A/B/C
+</div>
+
+
+<template v-if="loginType === 'username'">
+  <label>Username</label>
+  <input placeholder="Enter your username" key="username-input">
+</template>
+<template v-else>
+  <label>Email</label>
+  <input placeholder="Enter your email address" key="email-input">
+</template>
+
+
+
+<div v-for="(value, key, index) in object">
+  {{ index }}. {{ key }}: {{ value }}
+</div>
+
+
+
+<div class="form_mission_mian">
+		<div :class="list.surplus!==0?'form_mission_box':'grey'" v-for="list in missionList" :key="list.id" @click="goDetail(list)" >
+			<div class="form_mission_logo"></div>
+			<div class="form_mission_name">{{list.name}}</div>
+			<div class="form_mission_surplus">剩余{{list.surplus}}份</div>
+			<div class="form_mission_money">{{list.amount}}</div>
+		</div>
+	</div>
+
+
+
+
+this.$router.push({path:'/formRegisterTaskDetail'+"/"+list.id})
+
+
+<div class="coupon_tab">
+	
+	<router-link tag="div" :to="'/my/coupon/discountCoupon'">优惠券</router-link>
+	
+	<router-link tag="div" :to="'/my/coupon/freeLesson'">免费课程</router-link>	
+
+</div>
+		
+<router-view></router-view>
+
+
+.router-link-active{
+	color: red;
+	
+}
+
+<div class="left" :style="{background: 'url('+item.bg+') no-repeat center center'}">
+
+
+在低版本的ios手机上，页面也是白屏，这个时候应该是html，body都没有设置高度，我们在页面加上如下代码就行：
+
+1
+2
+3
+4
+5
+6
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+
+IOS10 白屏
+进入build文件夹；
+找到webpack.prod.conf.js文件；
+在UglifyPlugin的定义里添加关于mangle的选项，使它变成下面这个样子：
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        compress: {
+          warnings: false
+        },
+        mangle: {
+          safari10: true
+        }
+      },
+      sourceMap: config.build.productionSourceMap,
+      parallel: true
+    }),

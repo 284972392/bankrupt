@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>米多星</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="reset.css"/>
+		<style type="text/css">
+			html,body{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				background: #f1f1f1;
+			}
+			.startEarm{
+				width: 100%;
+				
+				background-size: 100% 100%;
+				z-index: 999;
+				display: flex;
+				flex-direction: column;
+				padding-top: 5%;
+				
+			}
+			.chat1{
+				width:46.66%;
+				margin-left:4.133%;
+				margin-top: 1.875rem;
+				margin-bottom: 1.3125rem;
+				display: none;
+			}
+			.chat2{
+				width: 37.73%;
+				margin-left:4.133%;
+				margin-bottom: 1.3125rem;
+				display: none;
+			}
+			.chat3{
+				width: 78.13%;
+				margin-left:4.133%;
+				margin-bottom: 1.3125rem;
+				display: none;
+			}
+			.chat4{
+				width: 78.13%;
+				margin-left:4.133%;
+				display: none;
+			}
+			.zhezhao{
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				top: 0;
+				left: 0;
+				background: rgba(0,0,0,.5) url(img/ToBrower.png) no-repeat top center;
+				background-size: 84%;
+				display: none;
+			}
+			.btm{
+				width: 100%;
+				position: absolute;
+				bottom: 1.9375rem;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.btm_btn{
+				width: 85.86%;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="position: absolute;visibility: hidden;">
+				<script src="https://s19.cnzz.com/z_stat.php?id=1274011341&web_id=1274011341" language="JavaScript"></script>	
+			</div>	
+		<div class="startEarm">
+			<img src="./img/1@2x.png" alt="" class="chat1">
+			<img src="./img/2@2x.png" alt="" class="chat2">
+			<img src="./img/3@2x.png" alt="" class="chat3">
+			<img src="./img/4@2x.png" alt="" class="chat4">
+			<div class="btm">
+				<img src="./img/btn@2x.png" alt="" class="btm_btn">
+			</div>
+		</div>
+
+			<div class="zhezhao"></div>
+
+				
+		</div>
+		<script src="zepto_1.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var _czc = _czc || [];
+			_czc.push(["_setAccount", "1274011341"]);
+			$(".btm").on("click",function(){
+				_czc.push(["_trackEvent",'跳动微信点击','点击','1',1,'button']);
+				 var ua = navigator.userAgent.toLowerCase();
+					    if(ua.match(/MicroMessenger/i)=="micromessenger") {
+					        $(".zhezhao").show()
+					        $(".startEarm").css("overflow","hidden")
+					         $(".zhezhao").click(function(){
+					         	$(this).hide()
+					        	$(".startEarm").css("overflow","auto")
+					         	
+					         })
+					    }else{
+					    	window.location.href = "https://front.miduoxing.cn/meters/blackBack/app-release-black.apk"//下载链接
+					    }
+			})
+			function resolveAfterSeconds(time) {
+				return new Promise(resolve =>setTimeout(() =>  resolve(), time))
+				}
+
+			// async function fn(time) {
+			// 	let a = await resolveAfterSeconds(time)
+			// 	return a
+			// }
+			
+
+			resolveAfterSeconds(1000).then(()=>{
+				$(".chat1").show()
+			})
+			resolveAfterSeconds(2000).then(()=>{
+				$(".chat2").show()
+			})
+			resolveAfterSeconds(3000).then(()=>{
+				$(".chat3").show()
+			})
+			resolveAfterSeconds(4000).then(()=>{
+				$(".chat4").show()
+			})
+			resolveAfterSeconds(5000).then(()=>{
+				$(".btm_btn").show()
+			})
+
+
+
+		</script>
+	</body>
+</html>

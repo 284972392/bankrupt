@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>精英家长惠</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="reset.css"/>
+		<style type="text/css">
+			body,html{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			* { touch-action: none; }
+			#wrapper{
+				width: 100%;
+				height: 100%;
+				background: #6486e8;
+				position: absolute;
+				padding: 1.25rem 0.62rem 1.34rem 0.62rem;
+			}
+			#Bigbox{
+				/*height: 114.55rem;*/
+			}
+			.qiu1{
+				height: 5.68rem;
+				width: 5.68rem;
+				position: absolute;
+				z-index: -100;
+				top: 3.34rem;
+				left: -0.36rem;
+			}
+			.qiu2{
+				height: 5.68rem;
+				width: 5.68rem;
+				position: absolute;
+				z-index: -100;
+				top:11.7rem;
+				right: -0.7rem;
+			}
+			.top{
+				width: 100%;
+				text-align: center;
+				margin-bottom: 1.56rem;
+			}
+			.top img{
+				height: 4.34rem;
+				width: 69.2%;
+			}
+       		.box1{
+       			background: #ffffff;
+       			
+       			margin-bottom: 0.93rem;
+       			padding: 0 0.71rem;
+       			border-radius: 0.3rem;
+       		}
+       		.box1 .you{
+       			height: 6.68rem;
+       			width: 100%;
+       			margin-bottom: 1.4rem;
+       		}
+       		.box1 .top1{
+       			height: 3.4rem;
+       			line-height: 3.4rem;
+       			font-size: 1.03rem;
+       			color: #000000;
+       			font-weight: bold;
+       		}
+       		.box1 .content1{
+       			display: flex;
+       			justify-content: space-between;
+       			
+       		}
+       		.box1 .content1 img{
+       			height: 5.84rem;
+       			width: 100%;
+       			margin-bottom: 1.09rem;
+       		}
+			.box2{
+				background: #FFFFFF;
+				height: 16.9rem;
+				margin-bottom: 0.93rem;
+			}
+			 .top2{
+				height: 3.12rem;
+				line-height: 3.12rem;
+				display: flex;
+				justify-content: space-between;
+				padding: 0 0.75rem;
+			}
+			 .top2 p:nth-child(1){
+				font-size: 1.03rem;
+				color: #000000;
+				font-weight: bold;
+			}
+
+			.box5{
+				background: #FFFFFF;
+				border-radius: 0.3rem;
+			}
+			.content5{
+				padding: 0 0.56rem;
+			}
+			.content5 img{
+				height: 6.37rem;
+				width: 100%;
+				margin-bottom: 0.87rem;
+			}
+			.btm{
+				height: 2.5rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="Bigbox">
+				<img src="img/1@2x.png" alt="" class="qiu1" />
+				<img src="img/2@2x.png" alt="" class="qiu2" />
+				<div class="top">
+					<img src="img/title@2x.png"/>
+				</div>
+				<div class="box1">
+					<div class="top1">超值生活福利券</div>
+					<div class="content1">
+						<img src="img/30yuan@2x.png" class="today2"/>
+					</div>
+					<!-- <img src="img/you100.png" class="you"/> -->
+				</div>
+
+
+				<div class="box5">
+					<div class="top2" style="height: 3.25rem;">
+						<p>名师课程免费领</p>	
+					</div>
+					<div class="content5">
+						<img src="img/hitalk@2x@2x.png" class="free1"/>
+						<img src="img/vipkid@2x@2x.png" class="free2"/>
+						<img src="img/song.png" class="free3"/>
+						<img src="img/liyou.png" class="free4"/>
+						<img src="img/seawind.png" class="free5" style="margin-bottom: 1.81rem;"/>
+					</div>
+				</div>
+				<div class="btm"></div>
+			</div>
+		</div>
+		<div style="position: absolute;visibility: hidden;">
+	<script src="https://s19.cnzz.com/z_stat.php?id=1274011341&web_id=1274011341" language="JavaScript"></script>
+			
+		</div>
+		<script src="iscroll-min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="zepto_1.1.3.js" type="text/javascript" charset="utf-8"></script>	
+		<script type="text/javascript">
+			var iscroll = new IScroll("#wrapper",{
+				mouseWheel : true,
+				scrollbars:false,
+				tap:true  //添加tap事件
+			})
+			var _czc = _czc || [];
+			_czc.push(["_setAccount", "1274011341"]);
+			var channel = '支付宝'
+			
+			$(".today1").on("tap",function(){
+				 	_czc.push(["_trackEvent",channel,'滴滴打车','点击',1,'button']); 				
+				window.location.href = "https://www.heiniubao.com/activity/wtxgdd8"
+			})
+			$(".today2").on("tap",function(){
+				 	_czc.push(["_trackEvent",channel,'美团红包','点击',1,'button']); 				
+				window.location.href = "https://www.heiniubao.com/activity/wtxgmt2"
+			})
+			$(".you").on("tap",function(){
+				 	_czc.push(["_trackEvent",channel,'每日优鲜','点击',1,'button']); 				
+				window.location.href = "https://as-vip.missfresh.cn/ug/landing-page.html?fromSource=pt-zfbfb-01"
+			})
+			
+		
+			//名师教育免费领
+			$(".free1").on("tap",function(){
+				 	_czc.push(["_trackEvent",channel,'hitalk','点击',1,'button']); 				
+				window.location.href = "https://mc.hujiang.com/classtopic/detail/94103?ch_campaign=cls14279&ch_source=oapp_zfb_2_klgbhdag"
+			})
+			$(".free2").on("tap",function(){
+				 	_czc.push(["_trackEvent",channel,'vipkid','点击',1,'button']); 				
+				window.location.href = "https://vipkid-bd.mikecrm.com/lcIc6ug"
+			})
+			$(".free3").on("tap",function(){
+				 	_czc.push(["_trackEvent",channel,'松鼠AI一对一','点击',1,'button']); 				
+				window.location.href = "http://fudao.171xue.com/sh/ssfddwdbzy10510.html?channel_id=186&keywords=ae5719581b8993c7&medium=渠道拓展"
+			})
+			$(".free4").on("tap",function(){
+				 	_czc.push(["_trackEvent",channel,'理优一对一','点击',1,'button']); 				
+				window.location.href = "http://www.leo1v1.com/market-wjx180810/index.html?channel=wjx180810"
+			})
+			$(".free5").on("tap",function(){
+				 	_czc.push(["_trackEvent",channel,'海风教育','点击',1,'button']); 				
+				window.location.href = "http://vip.hfjy.com/2018sjbT-m#qdcoop?adid=w915"
+			})
+		</script>
+	</body>
+</html>

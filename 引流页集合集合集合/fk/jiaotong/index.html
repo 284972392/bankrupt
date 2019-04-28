@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>随心办</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="reset.css"/>
+		<style type="text/css">
+			html,body{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			.startEarm{
+				width: 100%;
+				height: 100%;
+				overflow:scroll;
+				text-align: center;
+				background: url('./img/bg.png') no-repeat center center;
+				background-size: 100% 100%;
+				z-index: 999;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.titile{
+				width: 67%;
+				margin-top: 2.03125rem;
+			}
+			.card{
+				width: 74.53%;
+				margin-top: 1.5625rem;
+			}
+			.oo{
+				width: 34.53%;
+				margin-top: .46875rem;
+			}
+			.qrCode{
+				width: 31.6%;
+				margin-top: 1.875rem;
+			}
+			.p1{
+				font-size: .8125rem;
+				color: #ffffff;
+				font-weight: 900;
+				margin-top: .40625rem;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="startEarm">
+			<img src="./img/titile.png" alt="" class="titile">
+			<img src="./img/card.png" alt="" class="card">
+			<img src="./img/oo.png" alt="" class="oo">
+			<img src="./img/qrCode.png" alt="" class="qrCode">
+			<p class="p1">长按识别关注公众号</p>
+		</div>
+		<script src="zepto_1.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+
+			// var ua = navigator.userAgent.toLowerCase();
+			// 		    if(ua.match(/MicroMessenger/i)=="micromessenger") {
+			// 		    	$(".shibie").text("长按识别二维码")
+			// 		    }else{
+			// 		    	$(".shibie").text("保存图片，在微信中识别")
+			// 		    }
+
+			 function getUrlParam(name) {
+					var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+					var r = decodeURI(window.location.search).substr(1).match(reg); //匹配目标参数
+					if (r != null) return unescape(r[2]); return null; //返回参数值
+				}
+				var channel = '';
+				let a = getUrlParam('channel');
+				if(a){
+					channel = a;
+				}
+
+				var pageAccesURl ='https://cloud.miduoxing.cn/pageAccess/v2/pageAccessMore?pageName=jiaotong&channel='+channel;
+					$.ajax({
+							type:"post",
+							url:pageAccesURl,
+							contentType : "application/json",
+							Accept : "*/*",
+							success:function(res){
+										console.log(res)
+							}
+						})		
+		</script>
+	</body>
+</html>

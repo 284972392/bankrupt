@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>米多星</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="reset.css"/>
+		<style type="text/css">
+			html,body{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			.startEarm{
+				position: relative;
+				width: 100%;
+				height: 100%;
+				overflow-x: hidden;
+				overflow:hidden;
+				
+				text-align: center;
+				background: #fff;
+				z-index: 999;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.top{
+				height: 28.09375rem;
+				background: url('./img/bg.png') no-repeat center center;
+				background-size: 100% 100%;
+				width: 100%;
+			}
+			.toDownLoad{
+				margin-top: 9.2%;
+				width: 90.26%;
+			}
+			
+
+			.zhezhao{
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				top: 0;
+				left: 0;
+				background: rgba(0,0,0,.5) url(img/ToBrower.png) no-repeat top center;
+				background-size: 84%;
+				display: none;
+			}
+			.danmu {
+			position: absolute;
+			width: 400%;
+			left: 100%;
+			color:#000;
+			}
+			.danmu_a{top: 20%;animation: danmu 12s linear 1s infinite; }
+			.danmu_b{top: 15%;animation: danmu 13s linear 1.5s infinite; }
+			.danmu_c{top: 10%;animation: danmu 14s linear 2s infinite; }
+			.danmu_d{top: 17%;animation: danmu 12s linear 4.5s infinite;}
+			.danmu_e{top: 2%;animation: danmu 13s linear 5.5s infinite; }
+			.danmu_f{top: 8%;animation: danmu 14s linear 6s infinite;}
+			@keyframes danmu {
+			from {
+				left: 100%;
+				transform: translateX(0);
+			}
+			to {
+				left: 0;
+				transform: translateX(-100%);
+			}
+			}
+		</style>
+	</head>
+	<body>
+		<div style="position: absolute;visibility: hidden;">
+				<script src="https://s19.cnzz.com/z_stat.php?id=1274011341&web_id=1274011341" language="JavaScript"></script>	
+			</div>	
+		<div class="startEarm">
+			<div class="top"></div>
+			<img src="./img/btn.png" alt="" class="toDownLoad">
+
+			<div class="zhezhao"></div>
+			<p class="danmu danmu_a">mdx7436领取30元</p>
+			<p class="danmu danmu_b">我是大王领取43元</p>
+			<p class="danmu danmu_c">大太阳领取54元</p>
+			<p class="danmu danmu_d">四月领取50元</p>
+			<p class="danmu danmu_e">大孩子领取33元</p>
+			<p class="danmu danmu_f">小仙领取88元 </p>
+		</div>
+		
+
+		<script src="zepto_1.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var _czc = _czc || [];
+			_czc.push(["_setAccount", "1274011341"]);
+			$(".toDownLoad").on("click",function(){
+				_czc.push(["_trackEvent",'白底下载按钮','点击','1',1,'button']);
+				 var ua = navigator.userAgent.toLowerCase();
+					    if(ua.match(/MicroMessenger/i)=="micromessenger") {
+					        $(".zhezhao").show()
+					        $(".startEarm").css("overflow","hidden")
+					         $(".zhezhao").click(function(){
+					         	$(this).hide()
+					        	$(".startEarm").css("overflow","auto")
+					         	
+					         })
+					    }else{
+					    	window.location.href = "https://front.miduoxing.cn/meters/whiteBack/app-release-white.apk"//下载链接
+					    }
+			})
+		</script>
+	</body>
+</html>

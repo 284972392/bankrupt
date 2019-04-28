@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>米多星</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="reset.css"/>
+		<style type="text/css">
+			html,body{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			.startEarm{
+				width: 100%;
+				height: 100%;
+				overflow:hidden;
+				text-align: center;
+				background: #fff;
+				z-index: 999;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.top{
+				height: 13.45%;
+				font-size: 1.37rem;
+				font-weight: bold;
+				color: #000;
+				margin-top: 6%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+			.now{
+				font-size: 2.5rem;
+				font-weight: bold;
+				color: #000000;
+				margin-top: 6.86%;
+			}
+			.content{
+				height: 15.72%;
+				margin-top: 7%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				color: #000000;
+			}
+			.content p:nth-child(1){
+				font-size: 1.18rem;
+			}
+			.content p:nth-child(2){
+				font-size: 1.43rem;
+				font-weight: bold;
+			}
+			.content p:nth-child(3){
+				font-size: 1.25rem;
+			}
+			.content2{
+				height: 11.91%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				color: #000000;
+				margin-top: 11.54%;
+			}
+			.content2 p:nth-child(1){
+				font-size: 1.56rem;
+				font-weight: bold;
+			}
+			.content2 p:nth-child(2){
+				font-size: 1.71rem;
+				font-weight: bold;
+			}
+			.content3{
+				margin-top: 8.16%;
+				color: #000000;
+				font-size: 1.12rem;
+			
+			}
+			.toDownLoad{
+				height: 7.5vh;
+				line-height: 7.5vh;
+				width: 66.67%;
+				background: #e42222;
+				color: #FFFFFF;
+				font-size: 1.18rem;
+				text-align: center;
+				margin-top: 1rem;
+				border-radius: 3.75vh;
+			}
+			.footer{
+				font-size: 1.18rem;
+				color: #000000;
+				font-weight: bold;
+				margin-top: 5%;
+			}
+
+			.zhezhao{
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				top: 0;
+				left: 0;
+				background: rgba(0,0,0,.5) url(img/ToBrower.png) no-repeat top center;
+				background-size: 84%;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="position: absolute;visibility: hidden;">
+				<script src="https://s19.cnzz.com/z_stat.php?id=1274011341&web_id=1274011341" language="JavaScript"></script>	
+			</div>	
+		<div class="startEarm">
+			<div class="top">
+				<p>80<span style="font-size: 1.06rem;font-weight: 300;">年代，摆地摊就可以赚钱</span></p>
+				<p>90<span style="font-size: 1.06rem;font-weight: 300;">年代，买只股票就能挣钱</span></p>
+				<p>00<span style="font-size: 1.06rem;font-weight: 300;">年代，从事互联网能发财</span></p>
+			</div>
+			<div class="now">现在!</div>
+			<div class="content">
+				<p>下载 <span style="font-size: 1.56rem;font-weight: bold;">【米多星】</span> 就能赚钱！</p>
+				<p>只要你有手机，即可做任务赚钱</p>
+				<p>你是要死工资还是要一个赚钱的机会？</p>
+			</div>
+			<div class="content2">
+				<p>2008年<span style="font-size: 1.25rem;font-weight: 300;">你错过了</span>淘宝</p>
+				<p>2018年<span style="font-size: 1.25rem;font-weight: 300;">你不能错过</span><span style="font-size: 1.93rem;">【米多星】</span></p>
+			</div>
+			<div class="content3">
+				点击下方按钮↓↓↓2018年你会发财			
+			</div>
+			<div class="toDownLoad">
+				发财
+			</div>
+			<div class="footer">
+				何不给自己一个机会呢？试试也不亏
+			</div>
+			<div class="zhezhao"></div>
+				
+		</div>
+		<script src="zepto_1.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var _czc = _czc || [];
+			_czc.push(["_setAccount", "1274011341"]);
+			$(".toDownLoad").on("click",function(){
+				_czc.push(["_trackEvent",'白底下载按钮','点击','1',1,'button']);
+				 var ua = navigator.userAgent.toLowerCase();
+					    if(ua.match(/MicroMessenger/i)=="micromessenger") {
+					        $(".zhezhao").show()
+					        $(".startEarm").css("overflow","hidden")
+					         $(".zhezhao").click(function(){
+					         	$(this).hide()
+					        	$(".startEarm").css("overflow","auto")
+					         	
+					         })
+					    }else{
+					    	window.location.href = "https://front.miduoxing.cn/meters/whiteBack/app-release-white.apk"//下载链接
+					    }
+			})
+		</script>
+	</body>
+</html>

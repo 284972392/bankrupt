@@ -1,0 +1,97 @@
+<template>
+    <div>
+        <input class="form-control" id="inputEmail3" placeholder="请输入账号" v-model="account">
+        <input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码" v-model="password">
+        <div type="submit" class="btn btn-default" @click="register">注册</div>
+        <div type="submit" class="btn btn-default" @click="login">登录</div>
+        <div @click="getGood">获取商品信息</div>
+        <div @click="getCart">获取购物车</div>
+        <p></p>
+        <div @click="addToCart">加入购物车</div>
+        <p></p>
+        <div @click="delectCart">删除购物车</div>
+    </div>
+    
+</template>
+
+<script>
+    export default {
+    data() {
+        return {
+            account : '',
+            password : ''
+        }
+    },
+    methods:{
+      login() {
+         let params = { 
+              account : this.account,
+              password : this.password
+            };
+        this.$http.post('/api/user/login',params)
+          .then((response) => {
+            // 响应成功回调
+            console.log(response)
+          })
+          .catch((reject) => {
+            console.log(reject)
+          });
+        },
+        register(){
+           // 创建一个账号密码
+           let params = { 
+              account : this.account,
+              password : this.password
+            }
+           this.$http.post('/api/user/register',params).then((res)=>{
+             console.log(res)
+           }).catch((reject)=>{
+             console.log(reject)
+           })
+        },
+        getGood(){
+          this.$http({
+            url:'/api/goods',
+            methods:'GET'
+          }).then((res)=>{
+            console.log(res)
+          })
+        },
+        getCart(){
+         this.$http.get('/api/carts',{params:{name:'1501176073'}}).then((res)=>{
+           console.log(res)
+         })
+      },
+      addToCart(){
+        this.$http.get('/api/goods/addToCart',{params:{
+          'brand_id':10002,
+          'name':15011760730,
+          "brand_cate": "男装",
+          "brand_name": "商品名字2",
+          "brand_price": 120,
+          "brand_desc": "商品描述商品描述商品描述商品描述",
+          "brand_pic": "http://ohe5avf3y.bkt.clouddn.com/pro/vue/vue-shop/vue-proj-goods.jpg",
+          "cart_num": 1,
+          }}).then((res)=>{
+            console.log(res)
+          }).catch((err)=>{
+            console.log(err)
+          })
+      },
+      delectCart(){
+        this.$http.get('/api/goods/delectCart',{params:{
+          'brand_id':10002,
+          'name':15011760730
+        }}).then((res)=>{
+          console.log(res)
+        }).catch((err)=>{
+          console.log(err)
+        })
+      }
+
+
+      }
+      
+
+    }
+</script>

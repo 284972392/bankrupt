@@ -1,0 +1,27 @@
+{
+"configs" : [
+  {
+"server" : "hk2.ss.huanhuba.net",
+"server_port" : 1103,
+"password" : "An20Qo",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+,
+  {
+"server" : "hk1.ss.huanhuba.net",
+"server_port" : 8388,
+"password" : "An20Qo",
+"method" : "aes-256-cfb",
+"remarks" : ""}
+
+],
+"strategy" : "com.shadowsocks.strategy.ha",
+"index" : -1,
+"global" : false,
+"enabled" : true,
+"shareOverLan" : true,
+"isDefault" : false,
+"localPort" : 1080,
+"pacUrl" : null,
+"useOnlinePac" : false,
+"availabilityStatistics" : false}

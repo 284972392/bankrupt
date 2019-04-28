@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>花high</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="reset.css"/>
+		<style type="text/css">
+			html,body{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			.startEarm{
+				width: 100%;
+				height: 100%;
+				overflow:scroll;
+				text-align: center;
+				background: #5a65ce;
+				z-index: 999;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.top{
+				width: 30.93%;
+				margin-top: 2.1875rem;
+				margin-bottom: 1rem;
+			}
+			.title{
+				height: 2.0625rem;
+				width: 100%;
+				line-height: 2.0625rem;
+				display: flex;
+				justify-content: center;
+			}
+			.title img{
+				height: 2.0625rem;
+				width: 2.0625rem;
+				margin-right: .5625rem;
+			}
+			.title p{
+				font-size: 1.34375rem;
+				color: #ffffff;
+				font-weight: 900;
+			}
+			.card{
+				width: 84%;
+				padding: 1.5rem 0 2.0625rem 0;
+				background: #ffffff;
+				border-radius: .46875rem;
+				margin-top: 1.65625rem;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				box-shadow: 0 0 15px #010f63;
+			}
+			.cardTop{
+				background: #e3ecfb;
+				width: 8.125rem;
+				height: 2.15625rem;
+				line-height: 2.15625rem;
+				color: #1e4e9c;
+				font-size: 1.25rem;
+				font-weight: 900;
+			}
+			.cardTitle{
+				font-size: 1.25rem;
+				color: #333333;
+				font-weight: 900;
+				margin-top: .8125rem;
+				height: 1.6rem;
+				line-height: 1.6rem;
+				display: flex;
+			}
+			.cardTitle span{
+				color: #ec5d4a;
+				font-size: 1.6375rem;
+			}
+			.card img{width: 43%;margin-top: 1.5625rem;}
+			.card p{
+				color: #999999;
+				font-size: .875rem;
+				font-weight: 900;
+				margin-top: .4375rem;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="startEarm">
+			<img src="./img/high.png" alt="" class="top">
+			<div class="title">
+				<img src="./img/pass.png" alt="">
+				<p>恭喜你，检测通过</p>
+			</div>
+			<div class="card">
+				<div class="cardTop">关注公众号</div>
+				<div class="cardTitle">立即领取 <span>50000</span> 元吧！</div>
+				<img src="./img/qrCode.png" alt="">
+				<p class="shibie">长按识别二维码</p>
+			</div>
+		</div>
+		<script src="zepto_1.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+
+			var ua = navigator.userAgent.toLowerCase();
+					    if(ua.match(/MicroMessenger/i)=="micromessenger") {
+					    	$(".shibie").text("长按识别二维码")
+					    }else{
+					    	$(".shibie").text("保存图片，在微信中识别")
+					    }
+
+			 function getUrlParam(name) {
+					var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+					var r = decodeURI(window.location.search).substr(1).match(reg); //匹配目标参数
+					if (r != null) return unescape(r[2]); return null; //返回参数值
+				}
+				var channel = '';
+				let a = getUrlParam('channel');
+				if(a){
+					channel = a;
+				}
+
+				var pageAccesURl ='https://cloud.miduoxing.cn/pageAccess/v2/pageAccessMore?pageName=huaHigh2&channel='+channel;
+					$.ajax({
+							type:"post",
+							url:pageAccesURl,
+							contentType : "application/json",
+							Accept : "*/*",
+							success:function(res){
+										console.log(res)
+							}
+						})		
+		</script>
+	</body>
+</html>

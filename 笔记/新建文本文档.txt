@@ -1,0 +1,397 @@
+<template>
+    <div class="home">
+        <div class="title">员工管理</div>
+        <div class="search">
+            搜索
+            <Input v-model="value" placeholder="员工姓名/员工手机号" style="width: 15%;" size="large"></Input>
+          
+                 <Cascader :data="Cascader " v-model="Cascader_value" style="display:inline-block;margin-right:20px;" placeholder="所在机构/角色" @on-change="getValue"></Cascader>
+           
+            <ButtonGroup size="large">
+                <Button type="ghost">查询</Button>   
+            </ButtonGroup>
+            <ButtonGroup size="large">
+                <Button type="ghost" @click="addStaff = true">添加</Button>
+            </ButtonGroup>
+        </div>
+
+         <Modal v-model="addStaff" width="720">
+                <p slot="header" style="color:#f60;text-align:center">
+                    <span>添加员工</span>
+                </p>
+                <div style="text-align:center">     
+                      <Form :model="addform" :label-width="60" @submit.native.prevent>
+                        <Row>
+                            <Col span='11'>
+                            <FormItem label="姓名">
+                                <Input v-model="addform.name" placeholder="请输入姓名"></Input>
+                            </FormItem>
+                            </Col>
+                            <Col span='11'>
+                            <FormItem label="手机号">
+                                <Input v-model="addform.phone" placeholder="请输入手机号"></Input>
+                            </FormItem>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <FormItem label="所在机构/角色">
+                                <Cascader :data="Cascader " v-model="Cascader_value" style="width:90%;" placeholder="所在机构/角色" @on-change="getValue"></Cascader>
+                            </FormItem>
+                        </Row>
+                    </Form>
+                </div>
+                <div slot="footer">
+                    <Button type="error" size="large" long :loading="modal_loading" @click="confirm()">确定</Button>
+                </div>
+            </Modal>
+
+            <Modal v-model="changeStaff" width="720">
+                <p slot="header" style="color:#f60;text-align:center">
+                    <span>修改员工</span>
+                </p>
+                <div style="text-align:center">     
+                      <Form :model="changeform" :label-width="60" @submit.native.prevent>
+                        <Row>
+                            <Col span='11'>
+                            <FormItem label="姓名">
+                                <Input v-model="changeform.roleName" placeholder="请输入姓名"></Input>
+                            </FormItem>
+                            </Col>
+                            <Col span='11'>
+                            <FormItem label="手机号">
+                                <Input v-model="changeform.mobiPhone" placeholder="请输入手机号"></Input>
+                            </FormItem>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                       
+                        <FormItem label="所在机构/角色">
+                                <Cascader :data="Cascader " v-model="Cascader_value" style="display:inline-block;width:90%;" placeholder="所在机构/角色" @on-change="getChangeValue"></Cascader>
+                        </FormItem>
+                        </Col>
+                      </Row>
+
+                        <FormItem label="在职状态" prop='status'>
+                         <RadioGroup v-model="changeform.status">
+                            <Radio :label="1" ><span>在职</span></Radio>
+                            <Radio :label="0" ><span>离职</span></Radio>
+                         </RadioGroup>
+                       
+                        </FormItem>
+                    </Form>
+                </div>                                                                                           
+                <div slot="footer">
+                    <Button type="error" size="large" long :loading="change_loading" @click="changeConfirm()">确定</Button>
+                </div>
+            </Modal>
+
+    <div class="state_con">
+        <div class="all_users" :class="{active:shows==1}" @click="AllStaff()">全部员工(125)</div>
+        <div class="all_users" :class="{active:shows==2}" @click="BeOnStaff()">在职员工(125)</div>
+        <div class="all_users" :class="{active:shows==3}" @click="BeOffStaff()">离职员工(125)</div>
+    </div>
+        
+
+    <div class="table">
+        
+        <Table border ref="selection"  :columns="columns" :data="data1" height=475></Table>
+        <tr class="btn_tr">
+            <td>
+                <Button @click="handleSelectAll()" style="margin-right:30px;">全选</Button>
+                <!-- <Button @click="handleSelectAll(false)">取消全选</Button> -->
+                <Button @click="BeOn()">在职</Button>
+                <Button @click="BeOff()">离职</Button>
+            </td>
+   		 <Page :total='Number(totalNum)' show-elevator @on-change='handlePageSize' show-total :current="pageNum" :page-size="pageSize" style="margin-left: 400px;"></Page>
+            
+        </tr>
+        <!-- <input type="checkbox" @click="handleSelectAll()" :checked=this.checkedAll> -->
+
+        	
+    </div>
+    
+            <foot></foot>
+    </div>
+    
+</template>
+
+<script>
+    import foot from '../../../components/footer.vue'
+    export default {
+        components:{
+            foot
+        },
+        name:'',
+        data(){
+            return{
+                totalNum:1,
+                pageNum:1,
+                pageSize:9,
+                addStaff:false,
+                changeStaff:false,
+                modal_loading: false,
+                change_loading:false,
+                shows:'1',
+                value:'',
+                Cascader :[],
+                Cascader_value:[],
+                // 添加里的机构选项
+                  AddOganize:[],
+                // 添加里的角色
+                addRole:[ {value: 'dd',label: 'dd'}, {value: '3',label: '3'}],
+                // 添加员工
+                addform: {
+                    name: '',
+                   phone:''
+                },
+                // 修改员工
+                changeform:{
+                   
+                }, 
+                model1: '全部',
+                 columns: [
+                    {
+                        type: 'selection',
+                        width: 60,
+                        align: 'center'
+                    },
+                    {
+                        title: '员工编号',
+                        align: 'center',
+                        key: 'id'
+                    },
+                    {
+                        title: '员工账号',
+                        align: 'center',
+                        key: 'mobiPhone'
+                    },
+                    {
+                        title: '员工姓名',
+                        align: 'center',
+                        key: 'realName'
+                    },
+                    {
+                        title: '员工手机号',
+                        align: 'center',
+                        key: 'mobiPhone'
+                    },
+                     {
+                        title: '所在机构',
+                        align: 'center',
+                        key: 'departName'
+                    },
+                     {
+                        title: '角色',
+                        align: 'center',
+                        key: 'roleName'
+                    },
+                     {
+                        title: '管辖商户数',
+                        align: 'center',
+                        key: 'tenantNum'
+                    },
+                     {
+                        title: '在职状态',
+                        align: 'center',
+                        key: 'status'
+                    },
+                    {
+                        title: '创建人员',
+                        align: 'center',
+                        key: 'createBy'
+                    },
+                    {
+                        title: '创建时间',
+                        align: 'center',
+                        key: 'createTime'
+                    },
+                    {
+                        title: '操作',
+                        key: 'action',
+                        width: 250,
+                        align: 'center',
+                        render: (h, params) => {
+                            return h('div', [ 
+                                h('Button', {
+                                    props: {
+                                        type: 'text',
+                                        size: 'small'
+                                    },
+                                    style: {
+                                        marginRight: '5px'
+                                    },
+                                    on: {
+                                        click: () => {
+                                             this.checkStaff(params);
+                                        }
+                                    }
+                                }, '查看'),
+                                h('Button', {
+                                    props: {
+                                        type: 'text',
+                                        size: 'small'
+                                    },
+                                    on: {
+                                        click: () => {
+                                           this.changeStaff = true;
+                                           this.amend(params);
+                                        }
+                                    }
+                                }, '修改')
+                            ]);
+                        }
+                    }
+                ],
+                data1:[
+                  
+                ]
+            }
+        },
+        methods:{
+ 
+            //*************筛选************** */
+            //全部员工
+            AllStaff(){
+                this.shows = 1
+            },
+            //在职员工
+            BeOnStaff(){
+                this.shows = 2
+            },
+            //离职员工
+            //***************************** */
+            BeOffStaff(){
+                this.shows = 3
+            },
+             handleSelectAll () {
+                let status = !document.getElementsByClassName('ivu-checkbox-input')[0].checked
+                // console.log(document.getElementsByClassName('ivu-checkbox-input')[0].checked)
+                this.$refs.selection.selectAll(status);
+
+            },
+            //在职
+            BeOn(){
+              
+            },
+            //离职
+            BeOff(){
+
+            },
+            // 添加确认
+              confirm () {
+                this.modal_loading = true;
+                setTimeout(() => {
+                    this.modal_loading = false;
+                    this.addStaff = false;
+                    this.$Message.success("我也不知道传上去没");
+                  
+                }, 2000);
+            },
+            // 修改
+            amend(params){
+        
+                this.get(this.allUrl.findUser,{userId:params.row.id}).then((res)=>{
+                   console.log(res.data.data)
+                    this.changeform = res.data.data;
+                })
+            },
+            // 修改确认
+            changeConfirm(){
+                this.change_loading = true;
+                console.log(this.changeform)
+                setTimeout(() => {
+                    this.change_loading = false;
+                    this.changeStaff = false;
+                    this.$Message.success("我也不知道传上去没");
+            
+                }, 2000);
+            },
+            handlePageSize(value){
+                this.get(this.allUrl.userPage,{page:value,rows:9}).then((res)=>{
+                    this.totalNum = res.data.total
+                    this.data1 = res.data.rows
+                 })
+            },
+            // 查看员工
+            checkStaff(params){
+                this.get(this.allUrl.findUser,{userId:params.row.id}).then((res)=>{
+                    this.$store.state.staffInfo = res.data.data
+                    this.$router.push('/system/checkStaff')
+                })
+                    
+            },
+            // 获取联机选择器的值
+            getValue(value){
+                console.log(value)
+            },
+            // 获取修改联机选择器的值
+            getChangeValue(value){
+                console.log(value)
+            }
+        },
+        beforeMount() {
+            this.get(this.allUrl.findDepart).then((res)=>{
+                console.log(res.data.data)
+                this.Cascader = res.data.data;            
+            })
+
+            this.get(this.allUrl.userPage,{page:1,rows:9}).then((res)=>{
+                this.totalNum = res.data.total
+                this.data1 = res.data.rows
+                res.data.rows.forEach((i,index)=>{        
+                  i.createTime = changeTime(i.createTime)
+                })
+            })
+
+        },
+    }
+
+ function changeTime(param) { 
+             var d = new Date(param);
+            var times=d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+             return times;
+          }
+
+   
+
+</script>
+
+<style scoped lang="scss">
+    .home{
+        width:98%;height: 100%;
+        margin: 20px 20px 0px 20px; 
+        background: #fff;
+        .title{
+            height: 51px;width: 100%;line-height: 51px;
+            padding-left: 40px;font-size: 28px;
+            text-align: left;border-bottom:1px solid #000000;
+        }
+        .search{
+          
+            height: 71px;line-height: 71px;font-size: 24px;padding-left: 40px;
+            border-bottom:1px solid #000000;text-align: left;
+            .ivu-input-wrapper{margin-left: 17px;margin-right: 5px;}
+        }
+        .state_con{
+            display: flex;
+            .all_users{
+                height: 40px;line-height: 40px;width: 180px;text-align: center;
+                background: #9e9c9c;color: #ffffff;margin:20px 0;font-size: 18px;
+                margin-left: 40px;cursor: pointer;
+            }
+             .active{
+                    background: rgb(100, 190, 226);
+                }
+        }
+       .table{
+           margin-left: 40px;
+           .btn_tr{
+                    width: 100%;height: 60px;
+                    line-height: 60px;
+                    }
+            }
+
+          
+    }
+</style>

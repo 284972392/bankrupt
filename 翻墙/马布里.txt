@@ -1,0 +1,4 @@
+   "server": "hk2.ss.huanhuba.net",
+    "server_port": 1103,
+    "password": "An20Qo",
+    "method": "aes-256-cfb"

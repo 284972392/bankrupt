@@ -1,0 +1,2 @@
+addr,label,attempts,successes,consec successes,failures,consec failures,est rtt,most recent bandwidth estimate,est bandwidth
+178.128.211.203:443,fp-dosgp1-20181127-1360-lampshade (178.128.211.203:443),512,510,362,2,0,422.123326ms,2018-11-29T17:00:24.2905861+08:00,7156

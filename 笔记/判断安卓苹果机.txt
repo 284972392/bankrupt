@@ -1,0 +1,10 @@
+ 	 test(){
+                var ua = navigator.userAgent.toLowerCase();  
+                if (/android|adr/gi.test(ua)) {  
+                    // °²×¿  
+                    console.log("android")
+                }else if(/\(i[^;]+;( U;)? CPU.+Mac OS X/gi.test(ua)){  
+                    //Æ»¹û  
+                    console.log("iphone")
+                }
+            }

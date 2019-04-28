@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>精英家长惠</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="reset.css"/>
+		<style type="text/css">
+			body,html{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			* { touch-action: none; }
+			#wrapper{
+				width: 100%;
+				height: 100%;
+				background: #FFFFFF;
+				position: absolute;
+			
+			}
+			#Bigbox{
+				
+			}
+
+			.box{
+				background: #01314e;
+				padding-top: 0.78rem;
+				padding-bottom: 0.78rem;
+			}
+			.content{
+				padding: 0 0.56rem;
+			}
+			.content img{
+				height: 6.09rem;
+				width: 100%;
+				margin-bottom: 0.68rem;
+			}
+		
+			.top{
+				height: 11.34rem;
+				width: 100%;
+				
+			}
+			.top img{
+				height: 100%;
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="Bigbox">	
+				<div class="top">
+							<img src="img/banner@2x.png"/>
+					</div>
+				<div class="box">				
+					<div class="content">
+						<img src="img/vipkid@2x.png" class="free1"/>
+						<img src="img/hf.png" class="free2"/>
+						<img src="img/hj.png" class="free3"/>
+						<img src="img/aft.png" class="free4"/>
+						<img src="img/qkc.png" class="free5"/>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<script src="iscroll-min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="zepto_1.1.3.js" type="text/javascript" charset="utf-8"></script>	
+		<script type="text/javascript">
+			var iscroll = new IScroll("#wrapper",{
+				mouseWheel : true,
+				scrollbars:false,
+				tap:true  //添加tap事件
+			})
+
+			
+		
+			//名师教育免费领
+
+			function getUrlParam(name) {
+					var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+					var r = decodeURI(window.location.search).substr(1).match(reg); //匹配目标参数
+					if (r != null) return unescape(r[2]); return null; //返回参数值
+				}
+				var channel = '';
+				let a = getUrlParam('channel');
+				if(a){
+					channel = a;
+				}
+			
+			var pageAccesURl ='https://cloud.miduoxing.cn/pageAccess/v2/pageAccessMore?pageName=jyhd&channel='+channel
+						$.ajax({
+							type:"post",
+							url:pageAccesURl,
+							contentType : "application/json",
+							Accept : "*/*",
+							success:function(res){
+										
+							}
+						})		
+			$('.free1').on('tap',function(){
+				let btnAccessUrl = "https://cloud.miduoxing.cn/pageAccess/v2/btnAccessMore?pageName="+"jyhd&btnName="+"vipkid"+'&channel='+channel
+					$.ajax({
+					type:"post",
+					url:btnAccessUrl,
+					contentType : "application/json",
+					Accept : "*/*",
+					success:function(res){
+					
+					}
+				})
+				window.location.href = 'https://vipkid-bd.mikecrm.com/GagzSMc'
+			})
+			$('.free2').on('tap',function(){
+				let btnAccessUrl = "https://cloud.miduoxing.cn/pageAccess/v2/btnAccessMore?pageName="+"jyhd&btnName="+"hfjy"+'&channel='+channel
+					$.ajax({
+					type:"post",
+					url:btnAccessUrl,
+					contentType : "application/json",
+					Accept : "*/*",
+					success:function(res){
+				
+					}
+				})
+				window.location.href = 'http://vip.hfjy.com/2018sjbT-m#qdcoop?adid=w915'
+			})
+			$('.free3').on('tap',function(){
+				let btnAccessUrl = "https://cloud.miduoxing.cn/pageAccess/v2/btnAccessMore?pageName="+"jyhd&btnName="+"hujiang"+'&channel='+channel
+					$.ajax({
+					type:"post",
+					url:btnAccessUrl,
+					contentType : "application/json",
+					Accept : "*/*",
+					success:function(res){
+				
+					}
+				})
+				window.location.href = 'https://mc.hujiang.com/classtopic/detail/93838?ch_source=10012174&utr=10012174,6285,389417,9387'
+			})
+			$('.free4').on('tap',function(){
+				let btnAccessUrl = "https://cloud.miduoxing.cn/pageAccess/v2/btnAccessMore?pageName="+"jyhd&btnName="+"aft1v1"+'&channel='+channel
+					$.ajax({
+					type:"post",
+					url:btnAccessUrl,
+					contentType : "application/json",
+					Accept : "*/*",
+					success:function(res){
+				
+					}
+				})
+				window.location.href = 'https://page.aft1v1.com/html/wacai.html'
+			})
+			$('.free5').on('tap',function(){
+				let btnAccessUrl = "https://cloud.miduoxing.cn/pageAccess/v2/btnAccessMore?pageName="+"jyhd&btnName="+"qukoucai"+'&channel='+channel
+					$.ajax({
+					type:"post",
+					url:btnAccessUrl,
+					contentType : "application/json",
+					Accept : "*/*",
+					success:function(res){
+					
+					}
+				})
+				window.location.href = 'http://m.qukoucai.com/reco/cpa-zy'
+			})
+
+				
+				
+				
+
+		</script>
+	</body>
+</html>

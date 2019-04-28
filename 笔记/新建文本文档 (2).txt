@@ -1,0 +1,52 @@
+ // api addToCart
+  app.get('/api/goods/addToCart', function (req, res) {
+    let brand_id = req.query.brand_id
+    let name = req.query.name
+    let newCart = req.query
+    db.cartsModel.update({brand_id: brand_id, name: name}, {$set:newCart}, {upsert:true}, function(err){
+        if (err) {
+          console.log('加入购物车失败：' + err);
+          res.json({code: 700, msg:'加入购物车失败：' + err})
+          return
+        } else {
+          // add
+          res.json({code: 200, msg:'加入购物车成功'})
+          return
+        }
+    })
+  })
+  // api carts
+  app.get('/api/goods/carts', function (req, res) {
+    let name = req.query.name
+    db.cartsModel.find({name: name}, {__v: 0, _id: 0}, function(err, doc){
+      if (err) {
+        console.log('购物车查询出错：' + err);
+        res.json({code: 700, msg:'购物车查询出错：' + err})
+        return
+      } else {
+        if (!doc) {
+          res.json({code: 600, msg:'购物车为空', data: doc})
+          return
+        } else {
+          res.json({code: 200, msg:'购物车返回成功', data: doc})
+          return
+        }
+      }
+    })
+  })
+  // api delectCart
+  app.get('/api/goods/delectCart', function (req, res) {
+    let brand_id = req.query.brand_id
+    let name = req.query.name
+    db.cartsModel.remove({brand_id: brand_id, name: name}, function(err){
+      if (err) {
+        console.log('购物车删除：' + err);
+        res.json({code: 700, msg:'购物车删除：' + err})
+        return
+      } else {
+        // add
+        res.json({code: 200, msg:'购物车删除成功'})
+        return
+      }
+    })
+  })

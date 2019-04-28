@@ -1,0 +1,101 @@
+<template>
+    <div class="The_third">
+        <div class="third_header">
+			<div class="back" @click="back">∑µªÿ</div>
+			<div class="center">{{this.title}}</div>
+			<div class="block"></div>
+		</div>
+		<div class="framBox">?
+	        <iframe :src=this.src height="100%" width="100%" frameborder="0" id="iframe">
+			
+			</iframe>
+		</div>
+	</div>
+</template>
+
+<script>
+
+    export default {
+        name:'',
+        data(){
+            return{
+                title:'',
+                src:''
+            }
+        },
+        methods:{
+            back(){
+                this.$router.go(-1)
+			},
+		
+        },
+        beforeMount(){
+            this.title = this.$route.query.title
+            this.src = this.$route.query.url
+		},
+		mounted(){
+			var u = navigator.userAgent;
+					var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android÷’∂À
+					var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios÷’∂À
+					if(isiOS){
+						    var iframebody = document.getElementById('iframe').contentWindow.document.body;
+       						 iframebody.style.width = document.body.clientWidth+'px';
+					}
+		}
+    }
+</script>
+
+<style lang="scss" scoped>
+.The_third{
+	height: 100%;
+	width: 100%;
+	/*overflow: hidden;*/
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	 .third_header{
+  	width: 100%;
+	height: 2.85rem;
+  	background: #fae44c;
+  	padding-left: 0.62rem;
+  	padding-right: 0.62rem;
+  	box-sizing: border-box;
+  	display: flex;
+  	justify-content: space-between;
+  	 .back{
+  	width: 3.62rem;
+  	height: 100%;
+    line-height: 2.84rem;
+  	font-size: 1.0625rem;
+    color: #333333;
+    padding-left: .8125rem;
+  	background: url(../assets/back.png) no-repeat left center;
+	background-size: 0.62rem 1.28rem;
+ 		 }
+ 		  .center{
+  	width: 6.61rem;
+  	height: 2.81rem;
+  	text-align: center;
+  	line-height: 2.81rem;
+  	font-size: 1.12rem;
+    color: #333333;
+  }
+  .block{
+  	width: 3.62rem;
+  }
+  
+ 	 }
+ 	 .framBox{
+ 	 	width: 100%;
+ 	 	flex: 1;
+ 	 	-webkit-overflow-scrolling:touch;
+ 	 	overflow-y:scroll;
+ 	 	iframe{
+ 	 		display: block;
+ 	 		width: 100%!important;
+ 	 		height: 100%!important;
+ 	 	}
+ 	 }
+	}
+   
+</style>

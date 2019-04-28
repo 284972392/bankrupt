@@ -1,0 +1,38 @@
+启动mongoDB    mongod启动  mongo开启控制台
+   node中商品接口，商品种类分为很多种，在数据库中进行不同种类的数据查询，最后统一返回给调用者。
+但数据查询是异步的，几个异步查询完后进行统一汇总返回，用promise进行单个处理,promise.all进行汇总处理。
+
+//*************单个处理***************//
+   function getTemai(){
+    const getTemai = new Promise((resolve,reject)=>{
+        models.Goods.find({brand_status: "temai"},function (err,doc) {
+                if(err){
+                    console.log('temai find error!')
+                }else{
+                    if(!doc){
+                        temai = []
+                    }else{
+                        temai = doc;
+                    }
+                    resolve(temai)
+                }
+              }
+        )
+    })
+    return getTemai;
+   }
+
+//************汇总处理*******************//
+
+    Promise.all([getRexiao(),getTemai(),getJingpin()]).then( (value) => { 
+        let data = {
+            "rexiao":value[0],
+            "temai":value[1],
+            "jingpin":value[2]
+        }
+        res.json({code:200,msg:'',data:data})
+        return
+     }).catch((err)=>{
+        res.json({code:600,msg:"查询出错"})
+        return
+     })

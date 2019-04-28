@@ -1,0 +1,19 @@
+     const deleteMesBtn = (h, params) => {
+            return h('Button', {
+                props: {
+                    size: 'small',
+                    type: 'error'
+                },
+                on: {
+                    click: () => {
+                        this.recyclebinList.unshift(this.hasreadMesList.splice(params.index, 1)[0]);
+                    }
+                }
+            }, 'É¾³ý');
+        };
+
+
+
+return h('div', [
+                                markAsreadBtn(h, params)
+                            ]);

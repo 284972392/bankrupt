@@ -1,0 +1,245 @@
+// import { resolve } from 'path';
+
+// 可能是我的node版本问题，不用严格模式使用ES6语法会报错
+"use strict";
+const models = require('./db');
+const express = require('express');
+const router = express.Router();
+
+/************** 创建(create) 读取(get) 更新(update) 删除(delete) **************/
+
+// 注册账号接口
+router.post('/api/user/register',(req,res) => {
+    // 这里的req.body能够使用就在index.js中引入了const bodyParser = require('body-parser')
+    let newAccount = new models.Login({
+        account : req.body.account,
+        password : req.body.password
+    });
+
+    models.Login.findOne({'account':req.body.account},function (err,user) { 
+        if(err){
+            res.json({code: 700, msg:'wrong:' + err})
+            return
+        }else{
+            console.log(user)
+            if(user == null){
+                newAccount.save((err,data) => {
+                    if (err) {
+                        res.end('注册失败:' + err)               
+                    } else {
+                        res.json({code: 200, msg:'用户注册成功!'})
+                    }
+                })
+            }else{
+                res.json({code: 700, msg:'该用户名名已经被注册!'})
+            }
+           
+        }
+     })
+});
+
+// 登录接口，获取已有账号
+router.post('/api/user/login',(req,res) => {
+    // 通过模型去查找数据库
+    models.Login.findOne({'account':req.body.account},function (err,user) { 
+        if(err){
+            res.send(err)
+        }else{
+            if(!user){
+                res.json({code: 700, msg:'请输入正确的用户名'})
+                return
+            }else{
+                if (req.body.password != user.password) {
+                    res.json({code: 700, msg:'密码错误！'})
+                    return
+                  } else {
+                    res.json({code: 200, msg:'密码正确，登录成功!'})
+                    return
+                  }
+            }
+        }
+     })
+});
+
+//商品接口，获取商品信息
+router.get('/api/goods',function (req,res) {
+    let temai = [],
+        rexiao = [],
+        jingpin = [];
+    //特卖
+   function getTemai(){
+    const getTemai = new Promise((resolve,reject)=>{
+        models.Goods.find({brand_status: "temai"},function (err,doc) {
+                if(err){
+                    console.log('temai find error!')
+                }else{
+                    if(!doc){
+                        temai = []
+                    }else{
+                        temai = doc;
+                    }
+                    resolve(temai)
+                }
+              }
+        )
+    })
+    return getTemai;
+   }
+
+    //热销
+    function getRexiao(){
+        const getRexiao = new Promise((resolve,reject)=>{
+            models.Goods.find(
+                {brand_status: "rexiao"},
+                function (err,doc) {
+                    if(err){
+                        console.log('rexiao find error!')
+                    }else{
+                        if(!doc){
+                            rexiao = []
+                        }else{
+                            rexiao = doc
+                        }
+                        resolve(rexiao)
+                    }
+                  }
+            )
+        })
+        return getRexiao;
+    }
+
+    //精品
+    function getJingpin(){
+        const getJingpin = new Promise((resolve,reject)=>{
+            models.Goods.find(
+                {brand_status: "jingpin"},
+                function (err,doc) {
+                    if(err){
+                        console.log('rexiao find error!')
+                    }else{
+                        if(!doc){
+                            jingpin = []
+                        }else{
+                            jingpin = doc
+                        }
+                        resolve(jingpin)
+                    }
+                  }
+            )
+        })
+        return getJingpin;
+    }
+  
+    Promise.all([getRexiao(),getTemai(),getJingpin()]).then( (value) => { 
+        // console.log(value)
+        let data = {
+            "rexiao":value[0],
+            "temai":value[1],
+            "jingpin":value[2]
+        }
+        res.json({code:200,msg:'',data:data})
+        return
+     }).catch((err)=>{
+        res.json({code:600,msg:"查询出错"})
+        return
+     })
+  })
+
+//   查询全部商品信息
+//   router.get('/api/goods/all',function (req,res) {
+//     models.Goods.find({},function (err,doc) {
+//         if(err){
+//             res.json({code:600,msg:'err'})
+//         }else{
+//             res.json({code:200,data:doc})
+//         }
+//       })
+//   })
+
+
+  //查询购物车api
+router.get('/api/carts',function (req,res) { 
+    let name = req.query.name
+    models.carts.find({name:name},function (err,doc) {
+        if(err){
+            console.log("购物车查询出错："+ err)
+        }else{
+            console.log(doc)
+            if(doc.length==0){
+                res.json({code:600,msg:'购物车为空',data:doc})
+                return
+            }else{
+                res.json({code:200,msg:'购物车查询成功',data:doc})
+                return
+            }
+        }
+      })
+ })
+
+  // 加入购物车api
+  router.get('/api/goods/addToCart', function (req, res) {
+    let brand_id = req.query.brand_id
+    let name = req.query.name
+    let newCart = req.query
+    //根据传入的用户名和商品id查询购物车内是否原本就有该商品
+    models.carts.find({brand_id: brand_id, name: name},function (err,doc) {
+        if(err){
+            console.log("wrong")
+        }else{
+            //未添加入购物车过
+            if(doc.length == 0){
+                models.carts.update({brand_id: brand_id, name: name}, {$set:newCart}, {upsert:true}, function(err){
+                    if (err) {
+                      console.log('加入购物车失败：' + err);
+                      res.json({code: 700, msg:'加入购物车失败：' + err})
+                      return
+                    } else {
+                      // add
+                      res.json({code: 200, msg:'加入购物车成功'})
+                      return
+                    }
+                })
+            }else{
+                //购物车内有该商品 数量加1
+                let cart_num = doc[0].cart_num + 1;
+                newCart.cart_num = cart_num;
+                console.log(cart_num+"  "+newCart.cart_num)
+                models.carts.update({brand_id: brand_id, name: name}, {$set:newCart}, {upsert:true}, function(err){
+                    if (err) {
+                      console.log('加入购物车失败：' + err);
+                      res.json({code: 700, msg:'加入购物车失败：' + err})
+                      return
+                    } else {
+                      // add
+                      res.json({code: 200, msg:'加入购物车成功'})
+                      return
+                    }
+                })
+
+            }
+        }
+
+      })
+  })
+
+        //购物车删除api
+        router.get('/api/goods/delectCart', function (req, res) {
+            let brand_id = req.query.brand_id
+            let name = req.query.name
+            models.carts.remove({brand_id: brand_id, name: name}, function(err){
+              if (err) {
+                console.log('购物车删除出错：' + err);
+                res.json({code: 700, msg:'购物车删除出错：' + err})
+                return
+              } else {
+                // add
+                res.json({code: 200, msg:'购物车删除成功'})
+                return
+              }
+            })
+          })
+
+
+module.exports = router;
+
+

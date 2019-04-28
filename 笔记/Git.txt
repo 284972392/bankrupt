@@ -1,0 +1,125 @@
+﻿Git
+	http://www.runoob.com/git/git-tutorial.html
+
+	Git是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目
+
+	Git 与常用的版本控制工具 CVS, Subversion 等不同，它采用了分布式版本库的方式，不必服务器端软件支持。
+
+	概念：
+		工作区：可操作的项目目录
+		暂存区：
+		版本库：
+
+	使用步骤：
+		a. 安装
+		b. 全局配置
+			$ git config --global user.name "runoob"
+			$ git config --global user.email test@runoob.com
+
+		c. 创建仓库
+			进入项目目录，执行如下命令：
+				$ git init
+
+		d. 将工作区中所做的修改操作添加到暂存区
+			$ git status 
+				-- 查看版本库中的状态信息
+			$ git add <file>
+				-- <file>表示需要提交到暂存区中的文件路径
+				-- 如果取 . 代表当前目录下所有资源
+
+			$ git reset HEAD 
+				-- 将暂存区中缓存的资源取消缓存
+
+		e. 提交版本
+			$ git commit -m 版本说明
+				-- 将暂存区中缓存资源提交到版本库中
+
+			$ git log
+				-- 查看版本日志
+
+	远程仓库(github)：
+		a. 注册、登录
+		b. 本地创建SSH KEY
+			$ ssh-keygen -t rsa -C "youremail@example.com"
+
+			默认生成目录下
+			在 C:\Users\Administrator\.ssh 目录下使用文本工具打开 id_rsa.pub （公钥）文件，复制所有内容
+		c. 在 github 的配置中设置 ssh key 信息：
+			settings --> ssh and gpg keys --> new ssh key --> 填写标题与内容(粘贴上一步复制的内容) --> add ssh key
+
+			测试：
+				$ ssh -T git@github.com
+
+		d. 建立远程的空白仓库
+			new repository --> 填写仓库名与描述，选择公共还是私有 --> create repository
+
+		e. 将本地已有版本库推送到远程仓库中
+			$ git remote add origin git@github.com:itrainhub/h51708.git
+			$ git push -u origin master
+
+
+	流程：
+		a. 克隆 Git 资源作为工作目录。
+			$ git clone 仓库URL
+
+			如果本地已有版本库，其他人修改了，你可以更新资源。
+			$ git pull
+
+		b. 在工作区中添加或修改文件
+
+		c. 如果完成了一个功能，并测试通过，在提交前查看修改。
+			$ git status
+
+		d. 提交修改。
+			$ git add .
+			$ git commit -m 'message'
+
+			在修改完成后，如果发现错误，可以撤回提交并再次修改并提交。
+			$ git reset HEAD
+
+			提交到远程仓库中：
+				$ git push
+
+
+
+
+场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
+
+场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。
+
+场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
+
+
+
+Git鼓励大量使用分支：
+
+查看分支：git branch
+
+创建分支：git branch <name>
+
+切换分支：git checkout <name>
+
+创建+切换分支：git checkout -b <name>
+
+合并某分支到当前分支：git merge <name>
+
+删除分支：git branch -d <name>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>问卷星&阿卡索在线外教</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="reset.css"/>
+		<style type="text/css">
+			html,body{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			.startEarm{
+				width: 100%;
+				height: 100%;
+				overflow:scroll;
+				text-align: center;
+				background: #ffffff;
+				z-index: 999;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.top{
+				width: 21.33%;
+				margin-top: 4.78125rem;
+			}
+			.p1{
+				font-size: 1.0625rem;
+				color: #00d40d;
+				margin-top: .8125rem;
+				font-weight: bolder;
+				margin-bottom: 1.65625rem;
+			}
+			.three{
+				width: 62.93%;
+				margin-bottom: 5.34375rem;
+			}
+			.p2{
+				font-size: 1.15625rem;
+				color: #333333;
+				font-weight: bolder;
+			}
+			.code{
+				width: 57.33%;
+			}
+			.p3{
+				color: #343434;
+				margin-top: 1.09375rem;
+				font-size: .9375rem;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="startEarm">
+			<img src="./img/right.png" alt="" class="top">
+			<p class="p1">已获得</p>
+			<img src="./img/three.png" alt="" class="three">
+			<p class="p2">扫码免费获取</p>
+			<img src="./img/code.png" alt="" class="code">
+			<p class="p3">阿卡索外教网</p>
+		</div>
+		<script src="zepto_1.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+				var pageAccesURl ='https://cloud.miduoxing.cn/pageAccess/v2/pageAccess?pageName=akasuo'
+					$.ajax({
+							type:"post",
+							url:pageAccesURl,
+							contentType : "application/json",
+							Accept : "*/*",
+							success:function(res){
+										
+							}
+						})		
+		</script>
+	</body>
+</html>

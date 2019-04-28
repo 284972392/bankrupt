@@ -1,0 +1,33 @@
+微信端加入禁止事件点击后，页面样式多出一半空白可以滑动。解决方案:$('body').on('touchmove', function (event) {
+    event.preventDefault();
+});
+微信点击下载部分手机无法下载:解决方案 提示跳转浏览器下载==》部分浏览器 var a = loacalStorage.getItem(xxx)
+	此时无xxx  a == null 在华为默认浏览器会导致下载按钮无法触发。。。
+微信内置浏览器 多出一片空白 原因下方加入了用div包裹的站长统计将它display:absoulte;top:0;
+document.execCommand("Copy"); // 执行浏览器复制命令
+
+img图片访问403 forbidden错误  解决方法：<meta name="referrer" content="no-referrer" />
+
+登录权限： axios.defaults.withCredentials=true; // 让ajax携带cookie
+
+
+动态添加表单里有图片上传，先封装图片上传组件，然后在成功上传图片函数里将file保存到vuex里并且传一个函数给父组件，
+在父组件里获取这个方法，这是上传成功时触发的，可以拿到当前的Index值，并且可以在vuex中拿到图片的Url
+
+
+Vue在IE或者部分低版本浏览器中显示不支持 assign 属性或方法,导致页面空白无法显示； 引入npm install --save @babel/polyfill  在webpack.base.conf.js中配置  entry: ["@babel/polyfill", "./src/main.js"]
+
+
+由于类的方法都定义在prototype对象上面，所以类的新方法可以添加在prototype对象上面。
+Object.assign方法可以很方便地一次向类添加多个方法。
+
+class Point {
+  constructor(){
+    // ...
+  }
+}
+
+Object.assign(Point.prototype, {
+  toString(){},
+  toValue(){}
+});

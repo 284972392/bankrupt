@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>米多星</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="reset.css"/>
+		<style type="text/css">
+			html,body{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			.startEarm{
+				width: 100%;
+				height: 100%;
+				overflow:auto;
+				position: relative;
+				text-align: center;
+				z-index: 999;
+			}
+			.header{
+				width: 100%;
+				height: 16.4rem;
+				background: url(img/bg@2x.png) no-repeat center center;
+				background-size: 100% 100%;
+			}
+			.toDownLoad{
+				width: 75.8%;
+				height: 3.53rem;
+				background: url(img/btn@2x.png) no-repeat center center;
+				background-size: 100% 100%;
+				position: absolute;
+				left: 12.1%;
+				top: 14.96rem;
+			}
+			.footer{
+				width: 100%;
+				height: 46.12rem;
+				background: #fadcc2;
+				padding: 0;
+				padding-top:4.5rem;	
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-around;
+			}
+			.footer div{
+				width: 10.25rem;
+				height: 18.34rem;
+				box-shadow:0 0 7px saddlebrown;
+			}
+			.footer div:nth-child(1){
+				background: url(img/1.png) no-repeat center center;
+				background-size: 10.25rem 18.34rem;
+			}
+			.footer div:nth-child(2){
+				background: url(img/2.png) no-repeat center center;
+				background-size: 100% 100%;		
+			}
+			.footer div:nth-child(3){
+				background: url(img/3.png) no-repeat center center;
+				background-size: 100% 100%;
+			}
+			.footer div:nth-child(4){
+				background: url(img/4.png) no-repeat center center;
+				background-size: 100% 100%;
+				
+			}
+			.zhezhao{
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				top: 0;
+				left: 0;
+				background: rgba(0,0,0,.5) url(img/ToBrower.png) no-repeat top center;
+				background-size: 84%;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="position: absolute;visibility: hidden;">
+				<script src="https://s19.cnzz.com/z_stat.php?id=1274011341&web_id=1274011341" language="JavaScript"></script>	
+			</div>	
+		<div class="startEarm">
+			<div class="header"></div>
+			<div class="toDownLoad"></div>
+			<div class="footer">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<div class="zhezhao"></div>
+				
+		</div>
+		<script src="zepto_1.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var _czc = _czc || [];
+			_czc.push(["_setAccount", "1274011341"]);
+			$(".toDownLoad").on("click",function(){
+				_czc.push(["_trackEvent",'QR_code5点击按钮','点击','1',1,'button']);
+				 var ua = navigator.userAgent.toLowerCase();
+					    if(ua.match(/MicroMessenger/i)=="micromessenger") {
+					        $(".zhezhao").show()
+					        $(".startEarm").css("overflow","hidden")
+					         $(".zhezhao").click(function(){
+					         	$(this).hide()
+					        	$(".startEarm").css("overflow","auto")
+					         	
+					         })
+					    }else{
+					    	window.location.href = "https://front.miduoxing.cn/meters/miduoxing-2.0.apk"//下载链接
+					    }
+			})
+		</script>
+	</body>
+</html>

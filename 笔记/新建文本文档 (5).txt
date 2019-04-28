@@ -1,0 +1,62 @@
+// 加入购物车api
+  router.get('/api/goods/addToCart', function (req, res) {
+    let brand_id = req.query.brand_id
+    let name = req.query.name
+    let newCart = req.query
+    //根据传入的用户名和商品id查询购物车内是否原本就有该商品
+    models.carts.find({brand_id: brand_id, name: name},function (err,doc) {
+        if(err){
+            console.log("wrong")
+        }else{
+            //未添加入购物车过
+            if(doc.length == 0){
+                models.carts.update({brand_id: brand_id, name: name}, {$set:newCart}, {upsert:true}, function(err){
+                    if (err) {
+                      console.log('加入购物车失败：' + err);
+                      res.json({code: 700, msg:'加入购物车失败：' + err})
+                      return
+                    } else {
+                      // add
+                      res.json({code: 200, msg:'加入购物车成功'})
+                      return
+                    }
+                })
+            }else{
+                //购物车内有该商品 数量加1
+                let cart_num = doc[0].cart_num + 1;
+                newCart.cart_num = cart_num;
+                console.log(cart_num+"  "+newCart.cart_num)
+                models.carts.update({brand_id: brand_id, name: name}, {$set:newCart}, {upsert:true}, function(err){
+                    if (err) {
+                      console.log('加入购物车失败：' + err);
+                      res.json({code: 700, msg:'加入购物车失败：' + err})
+                      return
+                    } else {
+                      // add
+                      res.json({code: 200, msg:'加入购物车成功'})
+                      return
+                    }
+                })
+
+            }
+        }
+
+      })
+  })
+
+        //购物车删除api
+        router.get('/api/goods/delectCart', function (req, res) {
+            let brand_id = req.query.brand_id
+            let name = req.query.name
+            models.carts.remove({brand_id: brand_id, name: name}, function(err){
+              if (err) {
+                console.log('购物车删除出错：' + err);
+                res.json({code: 700, msg:'购物车删除出错：' + err})
+                return
+              } else {
+                // add
+                res.json({code: 200, msg:'购物车删除成功'})
+                return
+              }
+            })
+          })

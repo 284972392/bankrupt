@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>旅途点点</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="reset.css"/>
+		<style type="text/css">
+			body,html{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			* { touch-action: none; }
+			#wrapper{
+				width: 100%;
+				height: 100%;
+				background: -webkit-linear-gradient(#851dfa, #b534ff); /* Safari 5.1 - 6.0 */
+				background: -o-linear-gradient(#851dfa, #b534ff); /* Opera 11.1 - 12.0 */
+				background: -moz-linear-gradient(#851dfa, #b534ff); /* Firefox 3.6 - 15 */
+				background: linear-gradient(#851dfa, #b534ff); /* 标准的语法 */
+				position: absolute;
+			
+			}
+			#Bigbox{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				
+			}
+			.head{
+				height: 11.34375rem;
+				width: 100%;
+				background: url('./img/head.png') no-repeat center center;
+				background-size: 100% 100%;
+			}
+			.content{
+				width: 89.33%;
+				background: #f7effe;
+				margin-bottom: 1.25rem;
+				border-radius: .625rem;
+				overflow: hidden;
+			}
+			.box{
+				height: 9rem;
+				width: 100%;
+				background: #ffffff;
+				margin-bottom: .3125rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.tu{
+				width: 71.3%;
+				height: 7.4375rem;
+			}
+			.btn{
+				width: 5.125rem;
+				height: 5.125rem;
+				
+			}
+			.circleL{
+				position: absolute;
+				left: .65625rem;
+				top:10.34375rem;
+				width: 2.09375rem;
+				height: 1.25rem;
+			}
+			.circleR{
+				position: absolute;
+				height: 1.5rem;
+				width: 2.53125rem;
+				top: 9.65625rem;
+				right: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="Bigbox">
+				<div class="head"></div>
+				<img src="./img/circleL.png" alt="" class="circleL">
+				<img src="./img/circleR.png" alt="" class="circleR">
+				<div class="content">
+					<div class="box">
+						<img src="./img/360.png" alt="" class="tu btn1">
+						<img src="./img/btn.png" alt="" class="btn btn1">
+					</div>
+					<div class="box">
+						<img src="./img/b.png" alt="" class="tu btn2">
+						<img src="./img/btn.png" alt="" class="btn btn2">
+					</div>
+					<div class="box">
+						<img src="./img/d.png" alt="" class="tu btn3">
+						<img src="./img/btn.png" alt="" class="btn btn3">
+					</div>
+					<!--
+					<div class="box">
+						<img src="./img/zfb.png" alt="" class="tu btn4">
+						<img src="./img/btn.png" alt="" class="btn btn4">
+					</div>
+									<div class="box" style="margin-bottom:0;">
+						<img src="./img/ld.png" alt="" class="tu btn5">
+						<img src="./img/btn.png" alt="" class="btn btn5">
+					</div>
+					-->
+				</div>
+			</div>
+		</div>
+
+		<script src="iscroll-min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="zepto_1.1.3.js" type="text/javascript" charset="utf-8"></script>	
+		<script type="text/javascript">
+			var iscroll = new IScroll("#wrapper",{
+				mouseWheel : true,
+				scrollbars:false,
+				tap:true  //添加tap事件
+			})
+
+
+			var pageAccesURl ='https://cloud.miduoxing.cn/pageAccess/v2/pageAccess?pageName=double11'
+			
+			$.ajax({
+							type:"post",
+							url:pageAccesURl,
+							contentType : "application/json",
+							Accept : "*/*",
+							success:function(res){
+										
+							}
+						})			
+			
+			$(".btn1").on("tap",function(){
+				let btnAccessUrl;
+				
+					window.location.href = "https://mkt.360jie.com.cn/activity/ch/shyctb/lanmu9"
+					 btnAccessUrl = "https://cloud.miduoxing.cn/pageAccess/v2/btnAccess?pageName="+"double11&&btnName="+"360借条"
+						
+					$.ajax({
+					type:"post",
+					url:btnAccessUrl,
+					contentType : "application/json",
+					Accept : "*/*",
+					success:function(res){
+								
+					}
+				})
+
+
+			})
+
+			$(".btn2").on("tap",function(){
+				window.location.href = "https://sjh.baidu.com/site/szhometop.com/f4bd7cf5-a61d-47a3-80cb-1a0d4f9dac9b"
+				let btnAccessUrl = "https://cloud.miduoxing.cn/pageAccess/v2/btnAccess?pageName="+"double11&&btnName="+"爆款剃须刀"
+					$.ajax({
+					type:"post",
+					url:btnAccessUrl,
+					contentType : "application/json",
+					Accept : "*/*",
+					success:function(res){
+							
+					}
+				})
+			})
+
+			$(".btn3").on("tap",function(){
+				window.location.href = "https://jin.baidu.com/mkt/cloan/guide?code=0122huoke01&channel=JXJhuoke&spot=jrg0427-201804275"
+				let btnAccessUrl = "https://cloud.miduoxing.cn/pageAccess/v2/btnAccess?pageName="+"double11&&btnName="+"百度有钱花"
+					$.ajax({
+					type:"post",
+					url:btnAccessUrl,
+					contentType : "application/json",
+					Accept : "*/*",
+					success:function(res){
+								
+					}
+				})
+			})
+
+			$(".btn4").on("tap",function(){
+				window.location.href = "https://cpa.yizhidayu.com/dycpa/active/index.html?adCode=71f960307e9917d4"
+				let btnAccessUrl = "https://cloud.miduoxing.cn/pageAccess/v2/btnAccess?pageName="+"double11&&btnName="+"大鱼保险"
+					$.ajax({
+					type:"post",
+					url:btnAccessUrl,
+					contentType : "application/json",
+					Accept : "*/*",
+					success:function(res){
+								
+					}
+				})
+			})
+
+			$(".btn5").on("tap",function(){
+				window.location.href = "http://www.landi.com/Mobile/MarketSignIn/signin?from=cpahzltddgzh&param=q3WvivPj3n72qHEDcSqBan83Z16pPTgg_bQ"
+				let btnAccessUrl = "https://cloud.miduoxing.cn/pageAccess/v2/btnAccess?pageName="+"double11&&btnName="+"兰迪英语"
+					$.ajax({
+					type:"post",
+					url:btnAccessUrl,
+					contentType : "application/json",
+					Accept : "*/*",
+					success:function(res){
+								
+					}
+				})
+			})
+
+
+
+
+
+
+			
+			
+			
+			
+
+
+		</script>
+	</body>
+</html>
