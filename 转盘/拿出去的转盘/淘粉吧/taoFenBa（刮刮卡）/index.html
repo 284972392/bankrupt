@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="Description" content="夏服 转盘系统"/>
+		<meta name="Keywords" content="夏服 刮刮卡"/>
+		<title>刮刮卡</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/giftRole4.css"/>
+
+	</head>
+	<body>
+		<div class="changse">您还有<span></span>次刮卡机会</div>
+
+		<div class="banner">
+			<div class="bigWord animated wobble" id='bigWord'></div>
+		</div>
+		<div class="top">
+					<div class="rule">抽奖规则</div>
+					<div class="myGift">我的奖品</div>
+
+		</div>
+		<!--刮奖区-->
+		<div class="guaA"></div>
+    	<canvas id="myCanvas"></canvas>
+		<!--没有机会了展示内容-->
+		<div class="noChangse">
+			<div class="thanks">机会用完</div>
+			<div class="toThrd">查看奖品</div>
+		</div>
+		<div class="badChanse">
+			<div class="thanks">谢谢参与</div>
+			<div class="continiu">继续刮卡</div>
+		</div>
+		<!--奖品区-->
+		<div class="giftList">
+			<div class="header"></div>
+			<div class="threeGift">
+				<div class="gift1">
+					<img src="img/jia.png"/>
+					<div class="title">等待开启</div>
+					<div class="button">待点亮</div>
+					<div class="button2">去领奖</div>
+				</div>
+				<div class="gift2">
+					<img src="img/jia.png"/>
+					<div class="title">等待开启</div>
+					<div class="button">待点亮</div>
+					<div class="button2">去领奖</div>
+				</div>
+				<div class="gift3">
+					<img src="img/jia.png"/>
+					<div class="title">等待开启</div>
+					<div class="button">待点亮</div>
+					<div class="button2">去领奖</div>
+				</div>
+			</div>
+		</div>
+
+			
+			
+			<!--遮罩-->
+		<div class="zheZhao">
+			<!--规则遮罩-->
+			<div class="ruleZZ animated bounceIn">
+					<div class="cha"></div>
+			</div>
+			<!--中奖遮罩-->
+			<div class="giftZZ animated flipInY">
+					<div class="ZJL"></div>
+					<div class="banner">
+						<img src="" alt="" />
+						<div class="title"></div>
+						<div class="toGetGift">
+							<div class="toThree"></div>
+							<div class="goOn"></div>
+						</div>		
+					</div>
+					<div class="cha"></div>
+			</div>
+
+		</div>
+		<script src="js/jquery-2.2.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//防止滑动的时候整个屏幕滑动
+			document.body.addEventListener('touchmove', function (e) {
+			  e.preventDefault(); //阻止默认的处理方式(阻止下拉滑动的效果)
+			}, {passive: false});
+		$(function(){
+//页面访问统计
+ 		var pageAccesURl ='https://cloud.miduoxing.cn/pageAccess/v2/pageAccess?pageName=taofenba'
+			$.ajax({
+							type:"post",
+							url:pageAccesURl,
+							contentType : "application/json",
+							Accept : "*/*",
+							success:function(res){
+								console.log(res)
+							}
+						})
+//现金刮出来动画 			
+		setTimeout(function(){
+				$('#bigWord').removeClass('wobble');
+				$('#bigWord').addClass('pulse infinite');
+			}, 1000);
+	
+	
+//全局定义用户标识
+		 var Usign = {
+		 	orderId :"",
+		 	userSign : "",
+		 	place:""
+		 }
+//全局定义传递值
+				var aa ={
+					residue:3,  //剩余转动次数
+					links:"",//跳转链接
+					isWin:1,	//0未抽中，1 抽中
+					img:"", //抽中后弹框展示的图片
+					words:'',  // 奖品对应的字段
+					title:'', 
+					isGit:true,
+					winner:0
+				};
+	
+	
+	
+//刮刮奖canvas
+		var canvas = document.getElementById('myCanvas'),
+            ctx = canvas.getContext('2d'),
+            w = canvas.width;
+            h = canvas.height;
+            area = w * h;
+            l = canvas.offsetLeft;
+            t = canvas.offsetTop,
+            img = new Image();
+
+  //绑定事件
+        var bindEvent = function(){
+            canvas.addEventListener('touchmove', moveFunc, false);
+            canvas.addEventListener('touchend', endFunc, false);
+        };
+//按住移动执行
+        var moveFunc = function(e){
+            var touch = e.touches[0],
+                posX = touch.clientX - l,
+                posY = touch.clientY - t;
+            ctx.beginPath();
+            ctx.arc(posX, posY, 15, 0, Math.PI * 2, 0);
+            ctx.fill();
+        };
+//手指抬起执行
+        var endFunc = function(e){
+            var data = ctx.getImageData(0, 0, w, h).data,
+                scrapeNum = 0;
+            for(var i = 3, len = data.length; i < len; i += 4){
+                if(data[i] === 0){
+                    scrapeNum++;
+                }
+            }
+            if(scrapeNum > area * 0.15){
+//				var sc = "https://testjourney.hzqimiao.com/draw/initRecord?orderId="+Usign.orderId+"&&userSign="+Usign.userSign+"&&winner="+aa.winner+"&&place="+Usign.place
+			var sc = "https://journey.hzqimiao.com/draw/initRecord?orderId="+Usign.orderId+"&&userSign="+Usign.userSign+"&&winner="+aa.winner+"&&place="+Usign.place
+//				var sc = "http://192.168.2.228:8078/draw/initRecord?orderId="+Usign.orderId+"&&userSign="+Usign.userSign+"&&winner="+aa.winner+"&&place="+Usign.place
+				$.ajax({
+					type:"post",
+					url:sc,
+					contentType : "application/json",
+					Accept : "*/*",
+					success:function(res){
+						ctx.clearRect(0, 0, w, h);
+                canvas.removeEventListener('touchmove', moveFunc, false);
+                canvas.removeEventListener('touchend', endFunc, false);
+
+           		//展示弹框
+           		if (aa.isWin == 1) {
+						var bb = aa;
+           			setTimeout(function(){
+						$(".zheZhao").show();
+						$(".giftZZ").show();
+						$(".giftZZ .banner img").attr('src','http://'+bb.img)
+						$(".giftZZ .title").text(bb.words)
+                		giftLst();
+//弹框上前往第三方
+						$('.giftZZ .banner .toGetGift .toThree').click(function(){
+//按钮统计
+							let wtGift = bb.words
+          	var btnAccessUrl = "https://cloud.miduoxing.cn/pageAccess/v2/btnAccess?pageName="+"taofenba&&btnName="+wtGift
+					$.ajax({
+					type:"post",
+					url:btnAccessUrl,
+					contentType : "application/json",
+					Accept : "*/*",
+					success:function(res){
+						console.log(res)
+					}
+				})
+						window.location.href = bb.links
+						})
+               		 },500);
+				}else if(aa.isWin == 2){//抽到虚拟奖品
+						$(".badChanse").show()
+					}
+					}
+				});			
+				
+                
+            }
+            
+        };
+//获取当前订单抽中的奖品
+        var giftLst = function(){
+//      	var jj = "https://testjourney.hzqimiao.com/draw/getDrawLog"+"?orderId="+Usign.orderId+"&&userSign="+Usign.userSign+"&&page.pagesize=3&&page.currentPage=1"+"&&place="+Usign.place
+        	var jj = "https://journey.hzqimiao.com/draw/getDrawLog"+"?orderId="+Usign.orderId+"&&userSign="+Usign.userSign+"&&page.pagesize=3&&page.currentPage=1"+"&&place="+Usign.place
+//      	var jj = "http://192.168.2.228:8078/draw/getDrawLog"+"?orderId="+Usign.orderId+"&&userSign="+Usign.userSign+"&&page.pagesize=3&&page.currentPage=1"+"&&place="+Usign.place
+        	$.ajax({
+        		type:'post',
+				url:jj,
+        		contentType : "application/json",
+				Accept : "*/*",
+        		success:function(res){
+        			res.data = res.data.reverse()
+        				res.data.forEach(function(i,index){
+        					index = index+1
+        					$(".gift"+index+" img").attr("src","http://"+i.prizeLogo)
+        					$(".gift"+index+" .title").text(i.prizeName)
+        					$(".gift"+index+" .button").hide()
+        					$(".gift"+index+" .button2").show();
+        					$(".gift"+index+" .button2").click(function(){
+        						//底部按钮统计
+        						let wtGift = i.prizeName
+					          	var btnAccessUrl3 = "https://cloud.miduoxing.cn/pageAccess/v2/btnAccess?pageName="+"taofenba&&btnName="+"底部"+wtGift
+										$.ajax({
+										type:"post",
+										url:btnAccessUrl3,
+										contentType : "application/json",
+										Accept : "*/*",
+										success:function(res){
+											console.log(res)
+										}
+									})
+//							_czc.push(["_trackEvent",'刮刮奖底部',"跳转第三方",wtGift,'button']);
+        						window.location.href = i.prizeLink
+        					})
+        				})
+        		}
+        	})
+        }
+        
+//初始化 预抽奖        
+        var init = function(){
+        	var uu = "https://journey.hzqimiao.com/draw/preCalculate"+"?orderId="+Usign.orderId+"&&userSign="+Usign.userSign+"&&place="+Usign.place;
+//      	var uu = "https://testjourney.hzqimiao.com/draw/preCalculate"+"?orderId="+Usign.orderId+"&&userSign="+Usign.userSign+"&&place="+Usign.place;
+//      	var uu = "http://192.168.2.228:8078/draw/preCalculate"+"?orderId="+Usign.orderId+"&&userSign="+Usign.userSign+"&&place="+Usign.place;
+			$.ajax({
+				type:"post",
+				url:uu,
+				timeout:2000,//请求超时
+				contentType : "application/json",
+				Accept : "*/*",
+				success:function(res){
+					console.log(res)
+				$(".changse span").text(res.expand.count);
+				aa.residue = res.expand.count;
+				if (aa.residue == 0) {
+              			  	$('#myCanvas').hide();
+              			  	$(".noChangse").show();
+              			  	return;
+				}
+				ctx.fillStyle = "#f0d5b6";
+         	   ctx.fillRect(0, 0, w, h);
+         	   ctx.font = "italic 35px 黑体";
+				ctx.fillStyle = "#cb1425";
+				ctx.fillText("刮刮我 有惊喜",50,80,200);
+					
+					if (res.resultCode == "B10000") {
+							aa.behavior=1; 	//0跳转  ，1是打开弹框
+							aa.links="";//跳转链接
+							aa.isWin=0;	//0未抽中，1 抽中
+							aa.img=""; //抽中后弹框展示的图片
+							aa.words='';  // 奖品对应的字段
+							aa.title='';  // 奖品对应的字段
+							aa.isGit = false;
+					}else{
+						if (res.data.id == null) {
+//						img.src = "http://"+res.data.bannerUrl
+							img.src = 'img/bigWord.png'
+							aa.winner = res.expand.winner
+							aa.isWin = 2
+						}else{
+							aa.winner = res.expand.winner
+						img.src = "http://"+res.data.bannerUrl
+							aa.isWin = 1
+						}
+						aa.behavior = 1;
+						aa.isGit = true;
+						aa.links = res.data.link;
+						aa.img = res.data.bannerUrl;
+						aa.words = res.data.name;
+						aa.title = res.data.title;
+
+						click = true; //一次抽奖完成后，设置click为true，可继续抽奖		
+						return false;
+						
+					}
+				},
+				complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
+						　if(status=='timeout'){//超时,status还有success,error等值的情况
+							init()
+				　　　　}
+						if(status=='error'){
+						init()
+						}
+				}
+			})      
+            img.addEventListener('load', function(){
+                canvas.style.backgroundImage = 'url(' + img.src +')';
+                ctx.globalCompositeOperation = 'destination-out';
+                bindEvent();
+            });
+       };
+		//获取用户标识
+		var Give_me;
+		var url = location.search; //获取url中"?"符后的字串 ('?modFlag=business&role=1')
+		var theRequest = new Object();
+		if ( url.indexOf( "?" ) != -1 ) {
+		  var str = url.substr( 1 ); //substr()方法返回从参数值开始到结束的字符串；
+		  var strs = str.split( "&" );
+		  for ( var i = 0; i < strs.length; i++ ) {
+		    theRequest[ strs[ i ].split( "=" )[ 0 ] ] = ( strs[ i ].split( "=" )[ 1 ] );
+		  }
+			 Give_me = theRequest
+		}	
+		  Usign = {
+		  			place : Give_me.place,
+				 	orderId : Give_me.orderId,
+				 	userSign : Give_me.userSign
+				}
+		  //进页面获取中奖奖品
+		giftLst();
+		  //初始化奖池
+		init();	
+				
+		//规则遮罩
+		$(".rule").click(function(){
+				$(".zheZhao").show()
+				$(".ruleZZ").show()
+		})
+	
+	//弹框叉点击
+		$(".cha").click(function(){
+				$(".zheZhao").hide()
+				$(".ruleZZ").hide()
+				$(".giftZZ").hide()
+				
+		})
+	//中奖弹框的叉 点击叉的时候初始化
+	$(".giftZZ .cha").click(function(){
+		if (aa.residue > 1){
+              				  ctx.globalCompositeOperation = 'source-over';
+								init()
+              			  }else{
+              			  	$(".changse span").text(0);
+              			  	$('#myCanvas').hide()
+              			  	$(".noChangse").show()
+              			  }
+	})
+		//用户奖品点击跳转
+		$('.myGift').click(function(){
+//		_czc.push(["_trackEvent",'刮刮奖我的奖品','点击','1',1,'button']);
+//				window.location.href = 'https://front.miduoxing.cn/meters/giftListTest/index.html?orderId='+Usign.orderId+"&&userSign="+Usign.userSign+"&&place="+Usign.place;
+		window.location.href = 'https://front.miduoxing.cn/meters/giftList/index.html?orderId='+Usign.orderId+"&&userSign="+Usign.userSign+"&&place="+Usign.place;
+		})	
+		//没机会的时候，弹框上 查看奖品
+		
+		$('.toThrd').click(function(){
+//				window.location.href = 'https://front.miduoxing.cn/meters/giftListTest/index.html?orderId='+Usign.orderId+"&&userSign="+Usign.userSign;
+		window.location.href = 'https://front.miduoxing.cn/meters/giftList/index.html?orderId='+Usign.orderId+"&&userSign="+Usign.userSign+"&&place="+Usign.place;
+		})
+		
+		//弹框上 点击继续抽奖按钮
+		$('.giftZZ .banner .toGetGift .goOn').click(function(){
+//按钮统计 多少次点击 继续
+			var btnAccessUrl1 = "https://cloud.miduoxing.cn/pageAccess/v2/btnAccess?pageName="+"taofenba&&btnName="+"继续抽奖按钮"
+					$.ajax({
+					type:"post",
+					url:btnAccessUrl1,
+					contentType : "application/json",
+					Accept : "*/*",
+					success:function(res){
+						console.log(res)
+					}
+				})
+			$(".zheZhao").hide()
+			$(".giftZZ").hide()
+			if (aa.residue > 1){
+              				  ctx.globalCompositeOperation = 'source-over';
+								init()
+              			  }else{
+              			  	$(".changse span").text(0);
+              			  	$('#myCanvas').hide()
+              			  	$(".noChangse").show()
+              			  }
+		})
+//谢谢参与 上面点击继续抽奖
+						$(".badChanse .continiu").click(function(){
+							$(".badChanse").hide();
+							ctx.globalCompositeOperation = 'source-over';
+								init()
+						})
+			})
+		</script>
+	</body>
+</html>

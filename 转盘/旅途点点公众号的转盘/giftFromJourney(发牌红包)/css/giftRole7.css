@@ -1,0 +1,335 @@
+body{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: #fdc2a2!important;
+}
+.bg{
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+}
+.bigWord{
+	width: 60.13%;
+	height: 3.09rem;
+	position: absolute;
+	z-index: 200;
+	background: url(../img/bigword.png) no-repeat center center;
+	background-size: 100% 100%;
+	top: 6.25rem;
+	left: 19.93%;
+}
+.top{
+	width: 100%;
+	height: 4.03rem;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 500;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+ .top div{
+	width: 4.18rem;
+	height: 1.43rem;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+	background: rgba(0,0,0,.5);
+	font-size: 0.71rem;
+	color: #ffffff;
+	text-align: center;
+	line-height: 1.43rem;
+}
+.bigBox{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 400;
+	display: flex;
+	flex-direction: column;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+.bigBox .block{
+
+	overflow: hidden;
+	width: 100%;
+	height: 9.81rem;
+}
+.bigBox .contanner{
+	width: 100%;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 1.25rem;
+}
+.bigBox .contanner .chanse{
+	width: 9.43rem;
+	height: 1.93rem;
+	text-align: center;
+	line-height: 1.93rem;
+	background:#c42222;
+	border-radius: 20px;
+	font-size: 0.9rem;
+	color: #ffffff;
+}
+.bigBox .contanner .chanse span{
+	font-size: 1.06rem;
+	color: #fff605;
+}
+.bigBox .contanner .redBoxs{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	width: 100%;
+	flex: 1;
+	position: relative;
+	left: 42%;
+	top: 28.5%;
+	/* display: flex;
+	flex-wrap: wrap;
+	overflow: hidden; */
+}
+.bigBox .contanner .redBoxs div{
+	border-radius: 7px;
+	box-shadow: 0px 7px 50px #cf3334;
+	width: 16.26%;
+	height: 21.77%;
+	position: absolute;
+	background: url(../img/bao@2x.png) no-repeat center center;
+	background-size: 100% 100%;
+}
+.bigBox .contanner .resum{
+	width: 19.28rem;
+	height: 5.4rem;
+}
+.bigBox .contanner .resum .title{
+	width: 4.5rem;
+	height: 1.43rem;
+	margin: 0 auto;
+	font-size: 0.75rem;
+	color: #fff000;
+	text-align: center;
+	line-height: 1.43rem;
+	background: #e75d53;
+	border-top-left-radius:0.35rem;
+	border-top-right-radius:0.35rem;
+}
+.bigBox .contanner .resum .pianzi{
+	width: 19.28rem;
+	height:4rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	color: #ffffff;
+	background: #e75d53;
+	border-radius: 0.21rem;
+}
+.bigBox .contanner .resum .pianzi p span{
+	color: #fff000;
+}
+/*遮罩*/
+.zheZhao{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: rgba(0,0,0,.8);
+				z-index: 999;
+				overflow: hidden;
+				display: none;
+				padding-top: 2rem;
+			}   
+			 .cha{
+				width: 1.87rem;
+				height: 1.87rem;
+				background: url(../img/cha@2x.png) no-repeat center center;
+				background-size: 100% 100%;
+				margin: 0 auto;
+				margin-top: 3rem;
+			}     
+   .ruleZZ{
+				width: 17.75rem;
+				height: 28.9rem;
+				background: url(../img/guiz@2x.png) no-repeat top center;
+				background-size: 100%;
+				margin: 0 auto;
+				margin-top: 2.82rem;
+				display: none;
+				overflow: hidden;
+				position: relative;
+			}    
+			.ruleZZ .cha{
+				position: absolute;
+				bottom: 0;
+				left:7.97rem ;
+			}
+		.giftZZ{
+				/*width:17.75rem;
+				height: 23.87rem;*/
+				height: 100%;
+				width: 100%;
+				margin: 0 auto;
+		/*		margin-top: 2.75rem;*/
+		    /* padding-top: 2.75rem; */
+				background: url(../img/guang@2x.png) no-repeat center top;
+				background-size: 100%;
+				overflow: hidden;
+				display: none;
+			}	
+		.giftZZ  .ZJL{
+				width: 9.37rem;
+				height: 3.21rem;
+				background: url(../img/zjl@2x.png) no-repeat center center;
+				background-size: 100% 100%;
+				margin: 0 auto;
+				margin-top: 2.75rem;
+			}
+		.giftZZ  .banner{
+			width: 17.75rem;
+			height: 17.28rem;
+			margin: 0 auto;
+			background: url(../img/hez@2x.png) no-repeat center center;
+			background-size: 100% 100%;
+			margin-top: 0.68rem;
+			overflow: hidden;
+		}
+		.giftZZ  .banner img{
+			display: block;
+			width: 14.59rem;
+			height: 7.09rem;
+			margin: 0.46rem auto;
+		}
+		.giftZZ  .banner .title{
+			margin-top: 1.75rem;
+			width: 100%;
+			height: 2.46rem;
+			line-height: 2.46rem;
+			text-align: center;
+			font-size: 1.18rem;
+			color: #ffffff;
+			font-weight: 600;
+		}
+		.giftZZ .banner .toGetGift{
+				width: 14.81rem;
+				height: 4.56rem;
+				background: url(../img/linghiang@2x.png) no-repeat center center;
+				background-size: 100% 100%;
+				margin: 0 auto;
+			}	
+			
+	/*未中奖弹框内容*/
+			.noneGift{
+				overflow: hidden;
+				width:17.71rem;
+				height: 25.96rem;
+				margin: 0 auto;
+				margin-top: 6.84rem;
+				display: none;
+			}		
+		
+		.noneGift .ZJL{
+				width: 11.4rem;
+				height: 3rem;
+				background: url(../img/xxcy@2x.png) no-repeat center center;
+				background-size: 100% 100%;
+				margin: 0 auto;
+			}
+		.noneGift .banner{
+			overflow: hidden;
+				width:17.71rem;
+				height: 17.28rem;
+				background: url(../img/cany@2x.png) no-repeat center center;
+				background-size: 100% 100%;
+		}
+		.noneGift .banner .title{
+			width: 11.4rem;
+			height: 1.56rem;
+			margin: 0 auto;
+			margin-top: 10.56rem;
+			text-align: center;
+			line-height: 1.56rem;
+			color: #ffffff;
+			font-size: 1.21rem;
+			font-weight: 600;
+		}
+		.noneGift .banner .toGetGift{
+			width: 14.81rem;
+			height: 4.56rem;
+			margin: 0 auto;
+			margin-top: 0.62rem;
+			background: url(../img/jixu@2x.png) no-repeat center center;
+			background-size: 100% 100%;
+		}
+	/*抽完没机会了*/
+			.noChanse{
+				overflow: hidden;
+				width: 17.75rem;
+				height: 25.96rem;
+				margin: 0 auto;
+				margin-top: 4.31rem;
+				background-size: 100% 100%;
+				display: none;
+			}	
+	.noChanse	.ZJL{
+		width: 11.4rem;
+		height: 2.96rem;
+		margin: 0 auto;
+		background:url(../img/jhyw@2x.png) no-repeat center center;
+		background-size: 100% 100%;
+	}
+	.noChanse	.banner{
+		width: 17.75rem;
+		height: 17.28rem;
+		background:url(../img/yongwan@2x.png) no-repeat center center;
+		background-size: 100% 100%;
+		margin-top: 0.71rem;
+		overflow: hidden;
+	}
+	.noChanse	.banner .title{
+		width: 100%;
+		height: 2.56rem;
+		text-align: center;
+		line-height: 2.56rem;
+		margin-top: 9.5rem;
+		color: #FFFFFF;
+		font-size: 1.21rem;
+		flex-wrap: 600;
+	}
+		.noChanse	.banner .toGetGift{
+			width: 14.81rem;
+			height: 4.56rem;
+			background: url(../img/chakna@2x.png) no-repeat center center;
+			background-size: 100% 100%;
+			margin: 0 auto;
+		}
+
+.danmu {
+	position: fixed;
+	color: #f2ff0b;
+	height: 1.7rem;
+	line-height: .7rem;
+	background: rgba(18, 0, 50, .5);
+	padding:.5125rem;
+	border-radius: 50px;
+	left: 0;
+	top:3%;
+	visibility: hidden;
+	animation: danmu 9s linear 0s infinite;
+}
+.danmu2{
+	top:13%;
+	animation: danmu 13s linear 0s infinite;
+}
+.danmu3{
+	top:9%;
+	animation: danmu 8s linear 0s infinite;
+}
+.danmu4{
+	top:17%;
+	animation: danmu 11s linear 0s infinite;
+}
